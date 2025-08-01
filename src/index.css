@@ -55,6 +55,28 @@
     --sidebar-border: 220 13% 91%;
 
     --sidebar-ring: 217.2 91.2% 59.8%;
+    
+    /* Custom tourism gradients */
+    --gradient-ocean: linear-gradient(135deg, hsl(212, 84%, 55%), hsl(204, 100%, 70%));
+    --gradient-earth: linear-gradient(135deg, hsl(28, 87%, 67%), hsl(45, 100%, 75%));
+    --gradient-temperature-hot: linear-gradient(90deg, hsl(0, 100%, 70%), hsl(15, 100%, 65%));
+    --gradient-temperature-cold: linear-gradient(90deg, hsl(220, 100%, 70%), hsl(240, 100%, 80%));
+    --gradient-rainfall: linear-gradient(90deg, hsl(210, 100%, 25%), hsl(200, 100%, 50%));
+    
+    /* Map visualization colors */
+    --temp-hot: 0 100% 70%;
+    --temp-warm: 15 100% 65%;
+    --temp-mild: 45 100% 75%;
+    --temp-cool: 220 100% 70%;
+    --temp-cold: 240 100% 80%;
+    
+    --rain-high: 210 100% 25%;
+    --rain-medium: 200 100% 50%;
+    --rain-low: 0 0% 75%;
+    
+    /* Animations */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
   }
 
   .dark {
@@ -93,42 +115,6 @@
     --sidebar-accent-foreground: 240 4.8% 95.9%;
     --sidebar-border: 240 3.7% 15.9%;
     --sidebar-ring: 217.2 91.2% 59.8%;
-  }
-}
-
-    /* Custom tourism gradients */
-    --gradient-ocean: linear-gradient(135deg, hsl(212, 84%, 55%), hsl(204, 100%, 70%));
-    --gradient-earth: linear-gradient(135deg, hsl(28, 87%, 67%), hsl(45, 100%, 75%));
-    --gradient-temperature-hot: linear-gradient(90deg, hsl(0, 100%, 70%), hsl(15, 100%, 65%));
-    --gradient-temperature-cold: linear-gradient(90deg, hsl(220, 100%, 70%), hsl(240, 100%, 80%));
-    --gradient-rainfall: linear-gradient(90deg, hsl(210, 100%, 25%), hsl(200, 100%, 50%));
-    
-    /* Map visualization colors */
-    --temp-hot: 0 100% 70%;
-    --temp-warm: 15 100% 65%;
-    --temp-mild: 45 100% 75%;
-    --temp-cool: 220 100% 70%;
-    --temp-cold: 240 100% 80%;
-    
-    --rain-high: 210 100% 25%;
-    --rain-medium: 200 100% 50%;
-    --rain-low: 0 0% 75%;
-    
-    /* Animations */
-    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    --transition-bounce: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-  }
-
-  .dark {
-    /* Dark mode tourism colors */
-    --background: 213 19% 8%;
-    --foreground: 210 100% 95%;
-    
-    --card: 213 19% 12%;
-    --card-foreground: 210 100% 95%;
-    
-    --primary: 212 84% 65%;
-    --accent: 28 87% 70%;
   }
 }
 
