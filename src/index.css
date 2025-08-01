@@ -2,39 +2,41 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* Tourism World Map Design System - Travel & Adventure Inspired */
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Base colors - Ocean and Earth inspired */
+    --background: 210 100% 98%;
+    --foreground: 213 19% 18%;
 
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card-foreground: 213 19% 18%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover-foreground: 213 19% 18%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    /* Primary - Ocean Blue */
+    --primary: 212 84% 55%;
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    /* Secondary - Sky Blue */
+    --secondary: 204 100% 97%;
+    --secondary-foreground: 213 19% 18%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 210 40% 96%;
+    --muted-foreground: 213 16% 46%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    /* Accent - Warm Earth */
+    --accent: 28 87% 67%;
+    --accent-foreground: 0 0% 100%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --border: 214 32% 91%;
+    --input: 214 32% 91%;
+    --ring: 212 84% 55%;
 
     --radius: 0.5rem;
 
@@ -94,12 +96,86 @@ All colors MUST be HSL.
   }
 }
 
+    /* Custom tourism gradients */
+    --gradient-ocean: linear-gradient(135deg, hsl(212, 84%, 55%), hsl(204, 100%, 70%));
+    --gradient-earth: linear-gradient(135deg, hsl(28, 87%, 67%), hsl(45, 100%, 75%));
+    --gradient-temperature-hot: linear-gradient(90deg, hsl(0, 100%, 70%), hsl(15, 100%, 65%));
+    --gradient-temperature-cold: linear-gradient(90deg, hsl(220, 100%, 70%), hsl(240, 100%, 80%));
+    --gradient-rainfall: linear-gradient(90deg, hsl(210, 100%, 25%), hsl(200, 100%, 50%));
+    
+    /* Map visualization colors */
+    --temp-hot: 0 100% 70%;
+    --temp-warm: 15 100% 65%;
+    --temp-mild: 45 100% 75%;
+    --temp-cool: 220 100% 70%;
+    --temp-cold: 240 100% 80%;
+    
+    --rain-high: 210 100% 25%;
+    --rain-medium: 200 100% 50%;
+    --rain-low: 0 0% 75%;
+    
+    /* Animations */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  }
+
+  .dark {
+    /* Dark mode tourism colors */
+    --background: 213 19% 8%;
+    --foreground: 210 100% 95%;
+    
+    --card: 213 19% 12%;
+    --card-foreground: 210 100% 95%;
+    
+    --primary: 212 84% 65%;
+    --accent: 28 87% 70%;
+  }
+}
+
 @layer base {
   * {
     @apply border-border;
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-sans;
+    background: linear-gradient(135deg, hsl(var(--background)), hsl(210, 100%, 99%));
+  }
+
+  /* Smooth scrolling and animations */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Custom button variants */
+  .btn-pill {
+    @apply px-6 py-2 rounded-full font-medium transition-all duration-300;
+    @apply bg-secondary text-secondary-foreground hover:bg-primary hover:text-primary-foreground;
+    @apply transform hover:scale-105 active:scale-95;
+  }
+
+  .btn-pill.active {
+    @apply bg-primary text-primary-foreground shadow-lg;
+    background: var(--gradient-ocean);
+  }
+
+  /* Map tooltip styles */
+  .map-tooltip {
+    @apply absolute z-50 p-3 bg-card text-card-foreground rounded-lg shadow-xl border;
+    @apply transform -translate-x-1/2 -translate-y-full pointer-events-none;
+    @apply transition-all duration-200 opacity-0;
+  }
+
+  .map-tooltip.visible {
+    @apply opacity-100;
+  }
+
+  /* Temperature gradient classes */
+  .temp-gradient {
+    background: var(--gradient-temperature-hot);
+  }
+
+  .rainfall-gradient {
+    background: var(--gradient-rainfall);
   }
 }
