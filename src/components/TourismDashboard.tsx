@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { MonthSelector } from './MonthSelector';
 import { CategoryFilter } from './CategoryFilter';
-import { WorldMapSVG } from './WorldMapSVG';
+import { InteractiveWorldMap } from './InteractiveWorldMap';
 import { DataCategory } from '@/data/tourismData';
 import { Globe, TrendingUp } from 'lucide-react';
 
@@ -40,7 +40,7 @@ export const TourismDashboard: React.FC = () => {
 
         {/* World Map */}
         <div className="max-w-5xl mx-auto">
-          <WorldMapSVG
+          <InteractiveWorldMap
             selectedMonth={selectedMonth}
             selectedCategory={selectedCategory}
           />
