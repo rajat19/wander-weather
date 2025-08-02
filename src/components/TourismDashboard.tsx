@@ -6,7 +6,8 @@ import { DataCategory } from '@/data/tourismDataLoader';
 import { Globe, TrendingUp } from 'lucide-react';
 
 export const TourismDashboard: React.FC = () => {
-  const [selectedMonth, setSelectedMonth] = useState<string>('September');
+  const currentMonth = new Date().toLocaleString('default', { month: 'long' });
+  const [selectedMonth, setSelectedMonth] = useState<string>(currentMonth);
   const [selectedCategory, setSelectedCategory] = useState<DataCategory>('temperature');
 
   return (
@@ -74,12 +75,16 @@ export const TourismDashboard: React.FC = () => {
               </div>
               <div>
                 <span className="font-medium">Category:</span>{' '}
-                <span className="capitalize">{selectedCategory}</span>
+                <span className="capitalize">
+                  {selectedCategory === 'bestTime' ? 'Best time to visit' : selectedCategory}
+                </span>
               </div>
               <div className="mt-3 text-xs text-muted-foreground">
                 {selectedCategory === 'temperature'
                   ? 'Red indicates hot weather, blue indicates cold weather'
-                  : 'Blue indicates high rainfall, gray indicates low rainfall'}
+                  : selectedCategory === 'rainfall'
+                  ? 'Blue indicates high rainfall, gray indicates low rainfall'
+                  : 'Green = best time, yellow = okay, red = avoid visiting'}
               </div>
             </div>
           </div>

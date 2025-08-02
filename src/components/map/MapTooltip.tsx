@@ -7,6 +7,7 @@ export interface TooltipData {
   avgNightTemp: number;
   rainfall: number;
   description: string;
+  bestTime: 'best' | 'okay' | 'avoid';
   x: number;
   y: number;
 }
@@ -39,7 +40,7 @@ export const MapTooltip: React.FC<MapTooltipProps> = ({
   const tooltipWidth = 320;
   
   // Check if tooltip would be in bottom half of map
-  const isBottomHalf = tooltip.y > maxHeight * 0.4;
+  const isBottomHalf = tooltip.y > maxHeight * 0.3;
   
   // Calculate positioning with better logic
   const leftPos = Math.min(Math.max(tooltip.x - tooltipWidth / 2, 15), maxWidth - tooltipWidth - 15);
@@ -97,6 +98,23 @@ export const MapTooltip: React.FC<MapTooltipProps> = ({
           <div className="text-center">
             <div className="text-md font-bold">{tooltip.rainfall}mm</div>
             <div className="text-xs opacity-75">{rainfallLevel} rainfall</div>
+          </div>
+        </div>
+
+        {/* Best time to visit section */}
+        <div className="bg-black bg-opacity-20 rounded-lg p-3">
+          <div className="flex items-center justify-between mb-2">
+            <span className="text-sm font-medium opacity-80">📅 Best time to visit</span>
+          </div>
+          <div className="text-center">
+            <div className={`text-md font-bold ${
+              tooltip.bestTime === 'best' ? 'text-green-300' :
+              tooltip.bestTime === 'okay' ? 'text-yellow-300' : 'text-red-300'
+            }`}>
+              {tooltip.bestTime === 'best' ? '✅ Excellent time' :
+               tooltip.bestTime === 'okay' ? '⚠️ Decent time' : '❌ Not recommended'}
+            </div>
+            <div className="text-xs opacity-75 capitalize">{tooltip.bestTime} month to visit</div>
           </div>
         </div>
       </div>

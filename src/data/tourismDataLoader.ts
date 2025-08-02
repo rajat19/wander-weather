@@ -15,11 +15,12 @@ export interface CountryData {
       avgNightTemp: number; // Celsius
       rainfall: number; // mm
       description?: string;
+      bestTime: 'best' | 'okay' | 'avoid'; // Best time to visit rating
     };
   };
 }
 
-export type DataCategory = 'temperature' | 'rainfall';
+export type DataCategory = 'temperature' | 'rainfall' | 'bestTime';
 
 // Cache for loaded data
 let cachedData: CountryData[] | null = null;
@@ -139,4 +140,14 @@ export const getRainfallColor = (rainfall: number): string => {
   if (rainfall <= 150) return 'hsl(200, 70%, 50%)'; // High - blue
   if (rainfall <= 200) return 'hsl(210, 80%, 40%)'; // Very high - dark blue
   return 'hsl(220, 90%, 30%)'; // Extremely high - very dark blue
+};
+
+export const getBestTimeColor = (bestTime: 'best' | 'okay' | 'avoid'): string => {
+  // Traffic light system for best time to visit
+  switch (bestTime) {
+    case 'best': return 'hsl(120, 70%, 50%)'; // Green - Best time to visit
+    case 'okay': return 'hsl(45, 80%, 55%)'; // Yellow - Okay time to visit
+    case 'avoid': return 'hsl(0, 70%, 55%)'; // Red - Avoid visiting
+    default: return 'hsl(0, 0%, 80%)'; // Gray - No data
+  }
 };

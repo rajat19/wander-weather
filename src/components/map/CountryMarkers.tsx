@@ -2,7 +2,8 @@ import React from 'react';
 import { 
   DataCategory, 
   getTemperatureColor, 
-  getRainfallColor 
+  getRainfallColor,
+  getBestTimeColor 
 } from '@/data/tourismDataLoader';
 import { useTourismData } from '@/hooks';
 import { GeoProjection } from 'd3-geo';
@@ -37,7 +38,9 @@ export const CountryMarkers: React.FC<CountryMarkersProps> = ({
         const data = country.monthlyData[selectedMonth];
         const color = selectedCategory === 'temperature' 
           ? getTemperatureColor(data.avgDayTemp)
-          : getRainfallColor(data.rainfall);
+          : selectedCategory === 'rainfall'
+          ? getRainfallColor(data.rainfall)
+          : getBestTimeColor(data.bestTime);
         
         return (
           <g key={`marker-${country.code}`}>

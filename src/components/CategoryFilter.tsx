@@ -1,5 +1,5 @@
 import React from 'react';
-import { Thermometer, Cloud } from 'lucide-react';
+import { Thermometer, Cloud, Calendar } from 'lucide-react';
 import { DataCategory } from '@/data/tourismDataLoader';
 
 interface CategoryFilterProps {
@@ -34,6 +34,17 @@ export const CategoryFilter: React.FC<CategoryFilterProps> = ({
       >
         <Cloud size={20} />
         Rainfall
+      </button>
+      <button
+        onClick={() => onCategorySelect('bestTime')}
+        className={`flex items-center gap-2 px-6 py-3 rounded-lg transition-all duration-300 ${
+          selectedCategory === 'bestTime'
+            ? 'bg-primary text-primary-foreground shadow-lg transform scale-105'
+            : 'bg-secondary text-secondary-foreground hover:bg-primary/10'
+        }`}
+      >
+        <Calendar size={20} />
+        Best time to visit
       </button>
     </div>
   );

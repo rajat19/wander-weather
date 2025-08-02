@@ -3,6 +3,7 @@ import {
   DataCategory, 
   getTemperatureColor, 
   getRainfallColor,
+  getBestTimeColor,
   mapCountryCode 
 } from '@/data/tourismDataLoader';
 
@@ -28,8 +29,12 @@ export const getColorForCountry = (
   
   if (selectedCategory === 'temperature') {
     return getTemperatureColor(data.avgDayTemp);
-  } else {
+  } else if (selectedCategory === 'rainfall') {
     return getRainfallColor(data.rainfall);
+  } else if (selectedCategory === 'bestTime') {
+    return getBestTimeColor(data.bestTime);
+  } else {
+    return 'hsl(0, 0%, 85%)'; // Default gray for unknown category
   }
 };
 

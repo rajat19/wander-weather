@@ -36,6 +36,7 @@ export const useMapInteractions = (selectedMonth: string) => {
       avgNightTemp: data.avgNightTemp,
       rainfall: data.rainfall,
       description: data.description || '',
+      bestTime: data.bestTime,
       x: relativeX,
       y: relativeY,
     });
