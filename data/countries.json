@@ -908,7 +908,197 @@
         "description": "Cool and dry, ideal weather",
         "bestTime": "best"
       }
-    }
+    },
+    "regions": [
+      {
+        "name": "Northern Plains",
+        "description": "Delhi, Punjab, Uttar Pradesh",
+        "coordinates": [
+          28.6,
+          77.2
+        ],
+        "monthlyData": {
+          "January": {
+            "avgDayTemp": 21,
+            "avgNightTemp": 7,
+            "rainfall": 15,
+            "description": "Perfect winter weather",
+            "bestTime": "best"
+          },
+          "February": {
+            "avgDayTemp": 24,
+            "avgNightTemp": 10,
+            "rainfall": 20,
+            "description": "Ideal conditions",
+            "bestTime": "best"
+          },
+          "March": {
+            "avgDayTemp": 30,
+            "avgNightTemp": 16,
+            "rainfall": 15,
+            "description": "Pleasant spring",
+            "bestTime": "best"
+          },
+          "April": {
+            "avgDayTemp": 36,
+            "avgNightTemp": 22,
+            "rainfall": 10,
+            "description": "Getting hot",
+            "bestTime": "okay"
+          },
+          "May": {
+            "avgDayTemp": 41,
+            "avgNightTemp": 27,
+            "rainfall": 15,
+            "description": "Very hot, pre-monsoon",
+            "bestTime": "avoid"
+          },
+          "June": {
+            "avgDayTemp": 39,
+            "avgNightTemp": 29,
+            "rainfall": 85,
+            "description": "Monsoon begins, humid",
+            "bestTime": "avoid"
+          },
+          "July": {
+            "avgDayTemp": 35,
+            "avgNightTemp": 27,
+            "rainfall": 200,
+            "description": "Peak monsoon",
+            "bestTime": "avoid"
+          },
+          "August": {
+            "avgDayTemp": 34,
+            "avgNightTemp": 26,
+            "rainfall": 180,
+            "description": "Heavy monsoon rains",
+            "bestTime": "avoid"
+          },
+          "September": {
+            "avgDayTemp": 34,
+            "avgNightTemp": 24,
+            "rainfall": 120,
+            "description": "Late monsoon",
+            "bestTime": "avoid"
+          },
+          "October": {
+            "avgDayTemp": 33,
+            "avgNightTemp": 19,
+            "rainfall": 25,
+            "description": "Post-monsoon, pleasant",
+            "bestTime": "best"
+          },
+          "November": {
+            "avgDayTemp": 28,
+            "avgNightTemp": 13,
+            "rainfall": 5,
+            "description": "Perfect fall weather",
+            "bestTime": "best"
+          },
+          "December": {
+            "avgDayTemp": 23,
+            "avgNightTemp": 8,
+            "rainfall": 10,
+            "description": "Cool and dry",
+            "bestTime": "best"
+          }
+        }
+      },
+      {
+        "name": "Southern Coast",
+        "description": "Kerala, Tamil Nadu, Karnataka coast",
+        "coordinates": [
+          10.0,
+          76.3
+        ],
+        "monthlyData": {
+          "January": {
+            "avgDayTemp": 30,
+            "avgNightTemp": 23,
+            "rainfall": 25,
+            "description": "Pleasant winter",
+            "bestTime": "best"
+          },
+          "February": {
+            "avgDayTemp": 31,
+            "avgNightTemp": 24,
+            "rainfall": 20,
+            "description": "Warm and dry",
+            "bestTime": "best"
+          },
+          "March": {
+            "avgDayTemp": 33,
+            "avgNightTemp": 26,
+            "rainfall": 35,
+            "description": "Getting hot",
+            "bestTime": "okay"
+          },
+          "April": {
+            "avgDayTemp": 34,
+            "avgNightTemp": 27,
+            "rainfall": 85,
+            "description": "Hot, pre-monsoon showers",
+            "bestTime": "avoid"
+          },
+          "May": {
+            "avgDayTemp": 33,
+            "avgNightTemp": 27,
+            "rainfall": 180,
+            "description": "Very hot and humid",
+            "bestTime": "avoid"
+          },
+          "June": {
+            "avgDayTemp": 30,
+            "avgNightTemp": 25,
+            "rainfall": 350,
+            "description": "SW monsoon peak",
+            "bestTime": "avoid"
+          },
+          "July": {
+            "avgDayTemp": 29,
+            "avgNightTemp": 24,
+            "rainfall": 280,
+            "description": "Heavy monsoon",
+            "bestTime": "avoid"
+          },
+          "August": {
+            "avgDayTemp": 29,
+            "avgNightTemp": 24,
+            "rainfall": 220,
+            "description": "Continued monsoon",
+            "bestTime": "avoid"
+          },
+          "September": {
+            "avgDayTemp": 30,
+            "avgNightTemp": 24,
+            "rainfall": 180,
+            "description": "Late monsoon",
+            "bestTime": "avoid"
+          },
+          "October": {
+            "avgDayTemp": 31,
+            "avgNightTemp": 24,
+            "rainfall": 220,
+            "description": "NE monsoon begins",
+            "bestTime": "avoid"
+          },
+          "November": {
+            "avgDayTemp": 30,
+            "avgNightTemp": 23,
+            "rainfall": 140,
+            "description": "Post-monsoon",
+            "bestTime": "okay"
+          },
+          "December": {
+            "avgDayTemp": 30,
+            "avgNightTemp": 23,
+            "rainfall": 45,
+            "description": "Cool and pleasant",
+            "bestTime": "best"
+          }
+        }
+      }
+    ]
   },
   {
     "name": "Thailand",
@@ -1209,7 +1399,385 @@
         "description": "Winter holidays, cold weather",
         "bestTime": "okay"
       }
-    }
+    },
+    "regions": [
+      {
+        "name": "Northeast",
+        "description": "New York, Boston, Philadelphia region",
+        "coordinates": [
+          40.7,
+          -74.0
+        ],
+        "monthlyData": {
+          "January": {
+            "avgDayTemp": 3,
+            "avgNightTemp": -4,
+            "rainfall": 85,
+            "description": "Cold winter, snow possible",
+            "bestTime": "avoid"
+          },
+          "February": {
+            "avgDayTemp": 5,
+            "avgNightTemp": -3,
+            "rainfall": 70,
+            "description": "Cold winter continues",
+            "bestTime": "avoid"
+          },
+          "March": {
+            "avgDayTemp": 10,
+            "avgNightTemp": 2,
+            "rainfall": 95,
+            "description": "Spring transition",
+            "bestTime": "okay"
+          },
+          "April": {
+            "avgDayTemp": 16,
+            "avgNightTemp": 7,
+            "rainfall": 100,
+            "description": "Pleasant spring",
+            "bestTime": "best"
+          },
+          "May": {
+            "avgDayTemp": 22,
+            "avgNightTemp": 13,
+            "rainfall": 110,
+            "description": "Beautiful spring weather",
+            "bestTime": "best"
+          },
+          "June": {
+            "avgDayTemp": 27,
+            "avgNightTemp": 18,
+            "rainfall": 115,
+            "description": "Warm early summer",
+            "bestTime": "best"
+          },
+          "July": {
+            "avgDayTemp": 29,
+            "avgNightTemp": 21,
+            "rainfall": 120,
+            "description": "Hot and humid",
+            "bestTime": "okay"
+          },
+          "August": {
+            "avgDayTemp": 28,
+            "avgNightTemp": 20,
+            "rainfall": 105,
+            "description": "Hot and humid",
+            "bestTime": "okay"
+          },
+          "September": {
+            "avgDayTemp": 24,
+            "avgNightTemp": 16,
+            "rainfall": 95,
+            "description": "Perfect fall weather",
+            "bestTime": "best"
+          },
+          "October": {
+            "avgDayTemp": 18,
+            "avgNightTemp": 10,
+            "rainfall": 85,
+            "description": "Beautiful fall foliage",
+            "bestTime": "best"
+          },
+          "November": {
+            "avgDayTemp": 12,
+            "avgNightTemp": 4,
+            "rainfall": 90,
+            "description": "Cool fall",
+            "bestTime": "okay"
+          },
+          "December": {
+            "avgDayTemp": 6,
+            "avgNightTemp": -1,
+            "rainfall": 85,
+            "description": "Cold winter begins",
+            "bestTime": "avoid"
+          }
+        }
+      },
+      {
+        "name": "Southeast/Florida",
+        "description": "Florida, Georgia, South Carolina coast",
+        "coordinates": [
+          27.8,
+          -82.6
+        ],
+        "monthlyData": {
+          "January": {
+            "avgDayTemp": 22,
+            "avgNightTemp": 10,
+            "rainfall": 50,
+            "description": "Perfect winter weather",
+            "bestTime": "best"
+          },
+          "February": {
+            "avgDayTemp": 24,
+            "avgNightTemp": 12,
+            "rainfall": 45,
+            "description": "Ideal winter conditions",
+            "bestTime": "best"
+          },
+          "March": {
+            "avgDayTemp": 27,
+            "avgNightTemp": 15,
+            "rainfall": 65,
+            "description": "Warm and pleasant",
+            "bestTime": "best"
+          },
+          "April": {
+            "avgDayTemp": 30,
+            "avgNightTemp": 18,
+            "rainfall": 55,
+            "description": "Great spring weather",
+            "bestTime": "best"
+          },
+          "May": {
+            "avgDayTemp": 33,
+            "avgNightTemp": 22,
+            "rainfall": 85,
+            "description": "Getting hot and humid",
+            "bestTime": "okay"
+          },
+          "June": {
+            "avgDayTemp": 35,
+            "avgNightTemp": 25,
+            "rainfall": 180,
+            "description": "Hot, humid, rainy season",
+            "bestTime": "okay"
+          },
+          "July": {
+            "avgDayTemp": 36,
+            "avgNightTemp": 26,
+            "rainfall": 200,
+            "description": "Peak summer heat and rain",
+            "bestTime": "avoid"
+          },
+          "August": {
+            "avgDayTemp": 36,
+            "avgNightTemp": 26,
+            "rainfall": 190,
+            "description": "Hot, humid, thunderstorms",
+            "bestTime": "avoid"
+          },
+          "September": {
+            "avgDayTemp": 34,
+            "avgNightTemp": 24,
+            "rainfall": 165,
+            "description": "Hurricane season peak",
+            "bestTime": "avoid"
+          },
+          "October": {
+            "avgDayTemp": 30,
+            "avgNightTemp": 20,
+            "rainfall": 75,
+            "description": "Pleasant fall weather",
+            "bestTime": "best"
+          },
+          "November": {
+            "avgDayTemp": 26,
+            "avgNightTemp": 15,
+            "rainfall": 45,
+            "description": "Perfect fall conditions",
+            "bestTime": "best"
+          },
+          "December": {
+            "avgDayTemp": 23,
+            "avgNightTemp": 12,
+            "rainfall": 40,
+            "description": "Mild winter weather",
+            "bestTime": "best"
+          }
+        }
+      },
+      {
+        "name": "California",
+        "description": "Los Angeles, San Francisco, San Diego",
+        "coordinates": [
+          34.1,
+          -118.2
+        ],
+        "monthlyData": {
+          "January": {
+            "avgDayTemp": 19,
+            "avgNightTemp": 8,
+            "rainfall": 75,
+            "description": "Mild winter, some rain",
+            "bestTime": "best"
+          },
+          "February": {
+            "avgDayTemp": 20,
+            "avgNightTemp": 9,
+            "rainfall": 85,
+            "description": "Pleasant winter weather",
+            "bestTime": "best"
+          },
+          "March": {
+            "avgDayTemp": 22,
+            "avgNightTemp": 11,
+            "rainfall": 65,
+            "description": "Beautiful spring",
+            "bestTime": "best"
+          },
+          "April": {
+            "avgDayTemp": 24,
+            "avgNightTemp": 13,
+            "rainfall": 25,
+            "description": "Perfect spring weather",
+            "bestTime": "best"
+          },
+          "May": {
+            "avgDayTemp": 26,
+            "avgNightTemp": 16,
+            "rainfall": 10,
+            "description": "Ideal conditions",
+            "bestTime": "best"
+          },
+          "June": {
+            "avgDayTemp": 28,
+            "avgNightTemp": 18,
+            "rainfall": 5,
+            "description": "Perfect summer weather",
+            "bestTime": "best"
+          },
+          "July": {
+            "avgDayTemp": 30,
+            "avgNightTemp": 20,
+            "rainfall": 2,
+            "description": "Warm and dry",
+            "bestTime": "best"
+          },
+          "August": {
+            "avgDayTemp": 31,
+            "avgNightTemp": 20,
+            "rainfall": 3,
+            "description": "Warm and dry",
+            "bestTime": "best"
+          },
+          "September": {
+            "avgDayTemp": 30,
+            "avgNightTemp": 19,
+            "rainfall": 8,
+            "description": "Perfect fall weather",
+            "bestTime": "best"
+          },
+          "October": {
+            "avgDayTemp": 27,
+            "avgNightTemp": 16,
+            "rainfall": 15,
+            "description": "Beautiful fall",
+            "bestTime": "best"
+          },
+          "November": {
+            "avgDayTemp": 23,
+            "avgNightTemp": 12,
+            "rainfall": 35,
+            "description": "Mild fall weather",
+            "bestTime": "best"
+          },
+          "December": {
+            "avgDayTemp": 20,
+            "avgNightTemp": 9,
+            "rainfall": 55,
+            "description": "Mild winter",
+            "bestTime": "best"
+          }
+        }
+      },
+      {
+        "name": "Alaska",
+        "description": "Anchorage, Fairbanks region",
+        "coordinates": [
+          64.8,
+          -147.7
+        ],
+        "monthlyData": {
+          "January": {
+            "avgDayTemp": -23,
+            "avgNightTemp": -29,
+            "rainfall": 15,
+            "description": "Extreme cold, polar night",
+            "bestTime": "avoid"
+          },
+          "February": {
+            "avgDayTemp": -16,
+            "avgNightTemp": -25,
+            "rainfall": 12,
+            "description": "Very cold winter",
+            "bestTime": "avoid"
+          },
+          "March": {
+            "avgDayTemp": -5,
+            "avgNightTemp": -16,
+            "rainfall": 15,
+            "description": "Cold, daylight returns",
+            "bestTime": "avoid"
+          },
+          "April": {
+            "avgDayTemp": 8,
+            "avgNightTemp": -5,
+            "rainfall": 12,
+            "description": "Spring breakup, muddy",
+            "bestTime": "avoid"
+          },
+          "May": {
+            "avgDayTemp": 18,
+            "avgNightTemp": 5,
+            "rainfall": 20,
+            "description": "Pleasant spring",
+            "bestTime": "okay"
+          },
+          "June": {
+            "avgDayTemp": 23,
+            "avgNightTemp": 11,
+            "rainfall": 35,
+            "description": "Best weather, white nights",
+            "bestTime": "best"
+          },
+          "July": {
+            "avgDayTemp": 25,
+            "avgNightTemp": 13,
+            "rainfall": 45,
+            "description": "Warmest month",
+            "bestTime": "best"
+          },
+          "August": {
+            "avgDayTemp": 22,
+            "avgNightTemp": 10,
+            "rainfall": 55,
+            "description": "Still pleasant",
+            "bestTime": "best"
+          },
+          "September": {
+            "avgDayTemp": 14,
+            "avgNightTemp": 3,
+            "rainfall": 35,
+            "description": "Fall colors, cooler",
+            "bestTime": "okay"
+          },
+          "October": {
+            "avgDayTemp": 2,
+            "avgNightTemp": -7,
+            "rainfall": 25,
+            "description": "Getting cold",
+            "bestTime": "avoid"
+          },
+          "November": {
+            "avgDayTemp": -12,
+            "avgNightTemp": -20,
+            "rainfall": 20,
+            "description": "Winter sets in",
+            "bestTime": "avoid"
+          },
+          "December": {
+            "avgDayTemp": -20,
+            "avgNightTemp": -27,
+            "rainfall": 18,
+            "description": "Polar night returns",
+            "bestTime": "avoid"
+          }
+        }
+      }
+    ]
   },
   {
     "name": "Canada",
