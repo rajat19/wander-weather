@@ -1,10 +1,10 @@
 import React from 'react';
 import { 
-  tourismData, 
   DataCategory, 
   getTemperatureColor, 
   getRainfallColor 
-} from '@/data/tourismData';
+} from '@/data/tourismDataLoader';
+import { useTourismData } from '@/hooks';
 import { MapTooltip, TooltipData } from './MapTooltip';
 import { MapLegend } from './MapLegend';
 
@@ -23,14 +23,27 @@ export const FallbackMap: React.FC<FallbackMapProps> = ({
   onCountryHover,
   onCountryLeave,
 }) => {
+  const { tourismData: countries, loading } = useTourismData();
+
+  if (loading || !countries.length) {
+    return (
+      <div className="relative w-full h-[700px] bg-blue-100 rounded-lg overflow-hidden shadow-lg flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
+          <p className="text-gray-600">Loading fallback map...</p>
+        </div>
+      </div>
+    );
+  }
+
   return (
-    <div className="relative w-full h-[700px] bg-blue-100 rounded-lg overflow-hidden shadow-lg">
+    <div className="relative w-full h-[650px] bg-blue-100 rounded-lg overflow-hidden shadow-lg">
       <div className="absolute inset-0 flex items-center justify-center">
         <div className="text-center p-8">
           <h3 className="text-lg font-semibold mb-4">Loading World Map...</h3>
           <p className="text-sm text-gray-600 mb-4">Displaying available countries while map loads</p>
           <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4">
-            {tourismData.map((country) => {
+            {countries.map((country) => {
               const data = country.monthlyData[selectedMonth];
               const color = selectedCategory === 'temperature' 
                 ? getTemperatureColor(data.avgDayTemp)
@@ -59,7 +72,7 @@ export const FallbackMap: React.FC<FallbackMapProps> = ({
       {/* Legend */}
       <MapLegend 
         selectedCategory={selectedCategory} 
-        countryCount={tourismData.length} 
+        countryCount={countries.length} 
       />
 
       {/* Tooltip */}

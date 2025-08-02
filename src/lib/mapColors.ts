@@ -1,10 +1,10 @@
 import { 
-  tourismData, 
+  getCountriesData, 
   DataCategory, 
   getTemperatureColor, 
-  getRainfallColor 
-} from '@/data/tourismData';
-import { mapCountryCode } from './countryCodeMappings';
+  getRainfallColor,
+  mapCountryCode 
+} from '@/data/tourismDataLoader';
 
 /**
  * Gets the appropriate color for a country based on the selected category and month
@@ -17,7 +17,9 @@ export const getColorForCountry = (
   // Convert country ID to our format
   const alpha2Code = mapCountryCode(countryId);
   
+  const tourismData = getCountriesData();
   const country = tourismData.find(c => c.code === alpha2Code);
+  
   if (!country || !country.monthlyData[selectedMonth]) {
     return 'hsl(0, 0%, 85%)'; // Default gray for missing data
   }
@@ -36,6 +38,7 @@ export const getColorForCountry = (
  */
 export const hasCountryData = (countryId: string, selectedMonth: string): boolean => {
   const alpha2Code = mapCountryCode(countryId);
+  const tourismData = getCountriesData();
   const country = tourismData.find(c => c.code === alpha2Code);
   return !!(country && country.monthlyData[selectedMonth]);
 };

@@ -15,8 +15,8 @@ export const OceanBackground: React.FC = () => {
       
       {/* Ocean background */}
       <rect 
-        width={MAP_DIMENSIONS.width} 
-        height={MAP_DIMENSIONS.height} 
+        width="100%"
+        height="100%"
         fill="url(#oceanGradient)" 
       />
     </>

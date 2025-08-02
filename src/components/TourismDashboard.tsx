@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { MonthSelector } from './MonthSelector';
 import { CategoryFilter } from './CategoryFilter';
 import { WorldMapSVG } from './WorldMapSVG';
-import { DataCategory } from '@/data/tourismData';
+import { DataCategory } from '@/data/tourismDataLoader';
 import { Globe, TrendingUp } from 'lucide-react';
 
 export const TourismDashboard: React.FC = () => {
@@ -39,7 +39,7 @@ export const TourismDashboard: React.FC = () => {
         />
 
         {/* World Map */}
-        <div className="max-w-5xl mx-auto">
+        <div className="max-w-7xl mx-auto">
           <WorldMapSVG
             selectedMonth={selectedMonth}
             selectedCategory={selectedCategory}
@@ -84,7 +84,7 @@ export const TourismDashboard: React.FC = () => {
       {/* Footer */}
       <footer className="text-center py-8 mt-16 border-t border-border/50">
         <p className="text-sm text-muted-foreground">
-          Tourism data visualization • Built with React & TypeScript
+          Tourism data visualization • <a href="https://github.com/rajat19">Github</a>
         </p>
       </footer>
     </div>

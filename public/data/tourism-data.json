@@ -1,0 +1,223 @@
+{
+  "countries": [
+    {
+      "name": "Italy",
+      "code": "IT",
+      "coordinates": [41.8719, 12.5674],
+      "alternativeCodes": {
+        "alpha3": "ITA",
+        "numeric": "380",
+        "commonNames": ["Italia"]
+      },
+      "monthlyData": {
+        "January": { "avgDayTemp": 12, "avgNightTemp": 3, "rainfall": 65, "description": "Cool and wet, fewer crowds" },
+        "February": { "avgDayTemp": 14, "avgNightTemp": 4, "rainfall": 55, "description": "Mild winter, perfect for cities" },
+        "March": { "avgDayTemp": 17, "avgNightTemp": 7, "rainfall": 60, "description": "Spring begins, pleasant weather" },
+        "April": { "avgDayTemp": 21, "avgNightTemp": 11, "rainfall": 45, "description": "Beautiful spring weather" },
+        "May": { "avgDayTemp": 26, "avgNightTemp": 16, "rainfall": 35, "description": "Perfect weather, blooming season" },
+        "June": { "avgDayTemp": 30, "avgNightTemp": 20, "rainfall": 25, "description": "Warm and sunny, ideal for travel" },
+        "July": { "avgDayTemp": 33, "avgNightTemp": 23, "rainfall": 15, "description": "Hot summer, perfect for coast" },
+        "August": { "avgDayTemp": 33, "avgNightTemp": 23, "rainfall": 20, "description": "Peak summer heat" },
+        "September": { "avgDayTemp": 28, "avgNightTemp": 19, "rainfall": 45, "description": "Perfect autumn weather" },
+        "October": { "avgDayTemp": 23, "avgNightTemp": 14, "rainfall": 70, "description": "Mild autumn, harvest season" },
+        "November": { "avgDayTemp": 17, "avgNightTemp": 9, "rainfall": 85, "description": "Cool and rainy" },
+        "December": { "avgDayTemp": 13, "avgNightTemp": 5, "rainfall": 75, "description": "Winter begins, Christmas markets" }
+      }
+    },
+    {
+      "name": "France",
+      "code": "FR",
+      "coordinates": [46.6034, 1.8883],
+      "alternativeCodes": {
+        "alpha3": "FRA",
+        "numeric": "250",
+        "commonNames": ["Francia"]
+      },
+      "monthlyData": {
+        "January": { "avgDayTemp": 8, "avgNightTemp": 2, "rainfall": 55, "description": "Cold winter, quiet season" },
+        "February": { "avgDayTemp": 10, "avgNightTemp": 3, "rainfall": 45, "description": "Late winter, early spring hints" },
+        "March": { "avgDayTemp": 14, "avgNightTemp": 6, "rainfall": 50, "description": "Spring arrives, pleasant weather" },
+        "April": { "avgDayTemp": 18, "avgNightTemp": 9, "rainfall": 45, "description": "Beautiful spring, perfect for travel" },
+        "May": { "avgDayTemp": 22, "avgNightTemp": 13, "rainfall": 60, "description": "Lovely spring weather" },
+        "June": { "avgDayTemp": 26, "avgNightTemp": 16, "rainfall": 55, "description": "Early summer, ideal conditions" },
+        "July": { "avgDayTemp": 28, "avgNightTemp": 18, "rainfall": 60, "description": "Peak summer, warm and pleasant" },
+        "August": { "avgDayTemp": 28, "avgNightTemp": 18, "rainfall": 65, "description": "Warm summer continues" },
+        "September": { "avgDayTemp": 24, "avgNightTemp": 15, "rainfall": 55, "description": "Perfect autumn weather" },
+        "October": { "avgDayTemp": 18, "avgNightTemp": 11, "rainfall": 65, "description": "Mild autumn, harvest time" },
+        "November": { "avgDayTemp": 12, "avgNightTemp": 6, "rainfall": 70, "description": "Cool and rainy" },
+        "December": { "avgDayTemp": 9, "avgNightTemp": 3, "rainfall": 60, "description": "Winter holidays, Christmas markets" }
+      }
+    },
+    {
+      "name": "Spain",
+      "code": "ES",
+      "coordinates": [40.4637, -3.7492],
+      "alternativeCodes": {
+        "alpha3": "ESP",
+        "numeric": "724",
+        "commonNames": ["España"]
+      },
+      "monthlyData": {
+        "January": { "avgDayTemp": 15, "avgNightTemp": 6, "rainfall": 40, "description": "Mild winter, sunny days" },
+        "February": { "avgDayTemp": 17, "avgNightTemp": 7, "rainfall": 35, "description": "Pleasant winter weather" },
+        "March": { "avgDayTemp": 20, "avgNightTemp": 9, "rainfall": 30, "description": "Spring begins, perfect weather" },
+        "April": { "avgDayTemp": 24, "avgNightTemp": 12, "rainfall": 35, "description": "Beautiful spring, ideal for travel" },
+        "May": { "avgDayTemp": 28, "avgNightTemp": 16, "rainfall": 25, "description": "Perfect weather, blooming season" },
+        "June": { "avgDayTemp": 33, "avgNightTemp": 21, "rainfall": 15, "description": "Hot and dry, beach weather" },
+        "July": { "avgDayTemp": 36, "avgNightTemp": 24, "rainfall": 5, "description": "Peak summer heat" },
+        "August": { "avgDayTemp": 36, "avgNightTemp": 24, "rainfall": 10, "description": "Hottest month, coastal ideal" },
+        "September": { "avgDayTemp": 31, "avgNightTemp": 20, "rainfall": 25, "description": "Warm autumn, perfect weather" },
+        "October": { "avgDayTemp": 25, "avgNightTemp": 15, "rainfall": 35, "description": "Mild autumn, great weather" },
+        "November": { "avgDayTemp": 19, "avgNightTemp": 10, "rainfall": 45, "description": "Cool but pleasant" },
+        "December": { "avgDayTemp": 16, "avgNightTemp": 7, "rainfall": 45, "description": "Mild winter, festive season" }
+      }
+    },
+    {
+      "name": "Germany",
+      "code": "DE",
+      "coordinates": [51.1657, 10.4515],
+      "alternativeCodes": {
+        "alpha3": "DEU",
+        "numeric": "276",
+        "commonNames": ["Deutschland"]
+      },
+      "monthlyData": {
+        "January": { "avgDayTemp": 4, "avgNightTemp": -2, "rainfall": 45, "description": "Cold winter, snow possible" },
+        "February": { "avgDayTemp": 6, "avgNightTemp": -1, "rainfall": 35, "description": "Late winter, still cold" },
+        "March": { "avgDayTemp": 11, "avgNightTemp": 3, "rainfall": 40, "description": "Spring begins, mild weather" },
+        "April": { "avgDayTemp": 16, "avgNightTemp": 7, "rainfall": 35, "description": "Pleasant spring weather" },
+        "May": { "avgDayTemp": 21, "avgNightTemp": 12, "rainfall": 55, "description": "Beautiful spring, perfect for travel" },
+        "June": { "avgDayTemp": 24, "avgNightTemp": 15, "rainfall": 70, "description": "Early summer, comfortable" },
+        "July": { "avgDayTemp": 26, "avgNightTemp": 17, "rainfall": 80, "description": "Peak summer, warm and pleasant" },
+        "August": { "avgDayTemp": 26, "avgNightTemp": 16, "rainfall": 75, "description": "Warm summer continues" },
+        "September": { "avgDayTemp": 21, "avgNightTemp": 12, "rainfall": 55, "description": "Perfect autumn weather" },
+        "October": { "avgDayTemp": 15, "avgNightTemp": 8, "rainfall": 45, "description": "Cool autumn" },
+        "November": { "avgDayTemp": 9, "avgNightTemp": 4, "rainfall": 50, "description": "Cool and wet" },
+        "December": { "avgDayTemp": 5, "avgNightTemp": 1, "rainfall": 50, "description": "Winter arrives, Christmas markets" }
+      }
+    },
+    {
+      "name": "United Kingdom",
+      "code": "GB",
+      "coordinates": [55.3781, -3.4360],
+      "alternativeCodes": {
+        "alpha3": "GBR",
+        "numeric": "826",
+        "commonNames": ["UK", "Britain", "England"]
+      },
+      "monthlyData": {
+        "January": { "avgDayTemp": 7, "avgNightTemp": 2, "rainfall": 85, "description": "Cold and wet winter" },
+        "February": { "avgDayTemp": 8, "avgNightTemp": 2, "rainfall": 65, "description": "Late winter, still chilly" },
+        "March": { "avgDayTemp": 11, "avgNightTemp": 4, "rainfall": 70, "description": "Spring begins, mild and wet" },
+        "April": { "avgDayTemp": 14, "avgNightTemp": 6, "rainfall": 55, "description": "Pleasant spring weather" },
+        "May": { "avgDayTemp": 18, "avgNightTemp": 9, "rainfall": 60, "description": "Beautiful spring, perfect for gardens" },
+        "June": { "avgDayTemp": 21, "avgNightTemp": 12, "rainfall": 65, "description": "Early summer, comfortable" },
+        "July": { "avgDayTemp": 23, "avgNightTemp": 14, "rainfall": 70, "description": "Peak summer, warmest month" },
+        "August": { "avgDayTemp": 22, "avgNightTemp": 14, "rainfall": 80, "description": "Late summer, still warm" },
+        "September": { "avgDayTemp": 19, "avgNightTemp": 11, "rainfall": 75, "description": "Mild autumn" },
+        "October": { "avgDayTemp": 15, "avgNightTemp": 8, "rainfall": 90, "description": "Cool autumn, rainy" },
+        "November": { "avgDayTemp": 10, "avgNightTemp": 5, "rainfall": 95, "description": "Cool and wet" },
+        "December": { "avgDayTemp": 8, "avgNightTemp": 3, "rainfall": 90, "description": "Winter holidays, cozy atmosphere" }
+      }
+    },
+    {
+      "name": "Japan",
+      "code": "JP",
+      "coordinates": [36.2048, 138.2529],
+      "alternativeCodes": {
+        "alpha3": "JPN",
+        "numeric": "392",
+        "commonNames": ["Nippon"]
+      },
+      "monthlyData": {
+        "January": { "avgDayTemp": 10, "avgNightTemp": 2, "rainfall": 55, "description": "Cold winter, snow season" },
+        "February": { "avgDayTemp": 11, "avgNightTemp": 2, "rainfall": 60, "description": "Late winter, plum blossoms" },
+        "March": { "avgDayTemp": 14, "avgNightTemp": 5, "rainfall": 120, "description": "Spring begins, cherry blossom season starts" },
+        "April": { "avgDayTemp": 20, "avgNightTemp": 10, "rainfall": 125, "description": "Peak cherry blossom season" },
+        "May": { "avgDayTemp": 24, "avgNightTemp": 15, "rainfall": 140, "description": "Perfect spring weather" },
+        "June": { "avgDayTemp": 27, "avgNightTemp": 19, "rainfall": 165, "description": "Rainy season begins" },
+        "July": { "avgDayTemp": 31, "avgNightTemp": 23, "rainfall": 155, "description": "Hot and humid summer" },
+        "August": { "avgDayTemp": 32, "avgNightTemp": 24, "rainfall": 145, "description": "Peak summer heat" },
+        "September": { "avgDayTemp": 28, "avgNightTemp": 20, "rainfall": 210, "description": "Autumn begins, typhoon season" },
+        "October": { "avgDayTemp": 22, "avgNightTemp": 14, "rainfall": 165, "description": "Beautiful autumn colors" },
+        "November": { "avgDayTemp": 17, "avgNightTemp": 9, "rainfall": 95, "description": "Perfect autumn weather" },
+        "December": { "avgDayTemp": 12, "avgNightTemp": 4, "rainfall": 50, "description": "Cool winter, clear skies" }
+      }
+    },
+    {
+      "name": "Australia",
+      "code": "AU",
+      "coordinates": [-25.2744, 133.7751],
+      "alternativeCodes": {
+        "alpha3": "AUS",
+        "numeric": "036"
+      },
+      "monthlyData": {
+        "January": { "avgDayTemp": 30, "avgNightTemp": 20, "rainfall": 65, "description": "Hot summer, peak season" },
+        "February": { "avgDayTemp": 30, "avgNightTemp": 20, "rainfall": 60, "description": "Late summer, still hot" },
+        "March": { "avgDayTemp": 27, "avgNightTemp": 17, "rainfall": 55, "description": "Autumn begins, pleasant weather" },
+        "April": { "avgDayTemp": 23, "avgNightTemp": 13, "rainfall": 45, "description": "Perfect autumn weather" },
+        "May": { "avgDayTemp": 19, "avgNightTemp": 9, "rainfall": 50, "description": "Cool autumn" },
+        "June": { "avgDayTemp": 16, "avgNightTemp": 6, "rainfall": 55, "description": "Winter begins, cool weather" },
+        "July": { "avgDayTemp": 15, "avgNightTemp": 5, "rainfall": 50, "description": "Coldest month, winter season" },
+        "August": { "avgDayTemp": 17, "avgNightTemp": 6, "rainfall": 50, "description": "Late winter, still cool" },
+        "September": { "avgDayTemp": 20, "avgNightTemp": 9, "rainfall": 45, "description": "Spring begins, pleasant weather" },
+        "October": { "avgDayTemp": 24, "avgNightTemp": 13, "rainfall": 50, "description": "Beautiful spring weather" },
+        "November": { "avgDayTemp": 27, "avgNightTemp": 16, "rainfall": 55, "description": "Late spring, perfect weather" },
+        "December": { "avgDayTemp": 29, "avgNightTemp": 18, "rainfall": 60, "description": "Early summer, warm and pleasant" }
+      }
+    },
+    {
+      "name": "Brazil",
+      "code": "BR",
+      "coordinates": [-14.2350, -51.9253],
+      "alternativeCodes": {
+        "alpha3": "BRA",
+        "numeric": "076",
+        "commonNames": ["Brasil"]
+      },
+      "monthlyData": {
+        "January": { "avgDayTemp": 30, "avgNightTemp": 22, "rainfall": 180, "description": "Hot and wet summer" },
+        "February": { "avgDayTemp": 30, "avgNightTemp": 22, "rainfall": 160, "description": "Carnival season, hot and humid" },
+        "March": { "avgDayTemp": 29, "avgNightTemp": 21, "rainfall": 140, "description": "Late summer, still rainy" },
+        "April": { "avgDayTemp": 27, "avgNightTemp": 19, "rainfall": 90, "description": "Autumn begins, pleasant weather" },
+        "May": { "avgDayTemp": 25, "avgNightTemp": 16, "rainfall": 50, "description": "Perfect autumn weather" },
+        "June": { "avgDayTemp": 23, "avgNightTemp": 14, "rainfall": 25, "description": "Dry winter, mild temperatures" },
+        "July": { "avgDayTemp": 23, "avgNightTemp": 13, "rainfall": 20, "description": "Coolest month, dry season" },
+        "August": { "avgDayTemp": 25, "avgNightTemp": 15, "rainfall": 25, "description": "Late winter, dry and pleasant" },
+        "September": { "avgDayTemp": 27, "avgNightTemp": 17, "rainfall": 50, "description": "Spring begins, warming up" },
+        "October": { "avgDayTemp": 28, "avgNightTemp": 19, "rainfall": 110, "description": "Hot spring, rains return" },
+        "November": { "avgDayTemp": 29, "avgNightTemp": 20, "rainfall": 150, "description": "Late spring, getting wet" },
+        "December": { "avgDayTemp": 29, "avgNightTemp": 21, "rainfall": 180, "description": "Summer returns, hot and humid" }
+      }
+    },
+    {
+      "name": "United States",
+      "code": "US",
+      "coordinates": [37.0902, -95.7129],
+      "alternativeCodes": {
+        "alpha3": "USA",
+        "numeric": "840",
+        "commonNames": ["America", "USA"]
+      },
+      "monthlyData": {
+        "January": { "avgDayTemp": 8, "avgNightTemp": -3, "rainfall": 65, "description": "Cold winter, varies by region" },
+        "February": { "avgDayTemp": 11, "avgNightTemp": -1, "rainfall": 55, "description": "Late winter, still cold" },
+        "March": { "avgDayTemp": 16, "avgNightTemp": 4, "rainfall": 70, "description": "Spring begins, mild weather" },
+        "April": { "avgDayTemp": 22, "avgNightTemp": 10, "rainfall": 75, "description": "Pleasant spring weather" },
+        "May": { "avgDayTemp": 27, "avgNightTemp": 15, "rainfall": 85, "description": "Beautiful late spring" },
+        "June": { "avgDayTemp": 32, "avgNightTemp": 20, "rainfall": 90, "description": "Early summer, warm weather" },
+        "July": { "avgDayTemp": 34, "avgNightTemp": 23, "rainfall": 85, "description": "Peak summer heat" },
+        "August": { "avgDayTemp": 34, "avgNightTemp": 22, "rainfall": 85, "description": "Hot summer continues" },
+        "September": { "avgDayTemp": 29, "avgNightTemp": 18, "rainfall": 75, "description": "Perfect autumn weather" },
+        "October": { "avgDayTemp": 22, "avgNightTemp": 11, "rainfall": 65, "description": "Beautiful fall colors" },
+        "November": { "avgDayTemp": 15, "avgNightTemp": 5, "rainfall": 60, "description": "Cool autumn" },
+        "December": { "avgDayTemp": 9, "avgNightTemp": -1, "rainfall": 60, "description": "Winter holidays, cold weather" }
+      }
+    }
+  ],
+  "months": [
+    "January", "February", "March", "April", "May", "June",
+    "July", "August", "September", "October", "November", "December"
+  ]
+}

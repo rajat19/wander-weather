@@ -1,4 +1,4 @@
-import { geoPath, geoNaturalEarth1 } from 'd3-geo';
+import { geoPath, geoNaturalEarth1, GeoProjection } from 'd3-geo';
 
 export interface ProjectionConfig {
   scale: number;
@@ -7,9 +7,9 @@ export interface ProjectionConfig {
 }
 
 export const DEFAULT_PROJECTION_CONFIG: ProjectionConfig = {
-  scale: 180,
-  translateX: 600,
-  translateY: 350,
+  scale: 230,
+  translateX: 580,
+  translateY: 325,
 };
 
 /**
@@ -24,7 +24,7 @@ export const createProjection = (config: ProjectionConfig = DEFAULT_PROJECTION_C
 /**
  * Creates a path generator for the given projection
  */
-export const createPathGenerator = (projection: any) => {
+export const createPathGenerator = (projection: GeoProjection) => {
   return geoPath().projection(projection);
 };
 
@@ -33,6 +33,6 @@ export const createPathGenerator = (projection: any) => {
  */
 export const MAP_DIMENSIONS = {
   width: 1200,
-  height: 700,
-  viewBox: "0 0 1200 700",
+  height: 650,
+  viewBox: "0 0 1200 650",
 } as const;

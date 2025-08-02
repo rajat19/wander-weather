@@ -11,7 +11,7 @@ export const MapLegend: React.FC<MapLegendProps> = ({
   countryCount 
 }) => {
   return (
-    <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-sm rounded-lg p-3 shadow-lg">
+    <div className="absolute bottom-4 left-4 bg-white/90 backdrop-blur-sm rounded-lg p-3 shadow-lg">
       <h3 className="font-semibold text-sm mb-2">
         {selectedCategory === 'temperature' ? 'Temperature (°C)' : 'Rainfall (mm)'}
       </h3>

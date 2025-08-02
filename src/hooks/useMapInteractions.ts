@@ -1,6 +1,5 @@
 import { useState } from 'react';
-import { tourismData } from '@/data/tourismData';
-import { mapCountryCode } from '@/lib/countryCodeMappings';
+import { getCountriesData, mapCountryCode } from '@/data/tourismDataLoader';
 import { TooltipData } from '@/components/map/MapTooltip';
 
 export const useMapInteractions = (selectedMonth: string) => {
@@ -11,6 +10,7 @@ export const useMapInteractions = (selectedMonth: string) => {
     countryId: string
   ) => {
     const alpha2Code = mapCountryCode(countryId);
+    const tourismData = getCountriesData();
     const country = tourismData.find(c => c.code === alpha2Code);
     
     if (!country || !country.monthlyData[selectedMonth]) return;

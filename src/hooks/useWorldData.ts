@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react';
 import { feature } from 'topojson-client';
+import { WorldData } from '@/types';
 
 export const useWorldData = () => {
-  const [worldData, setWorldData] = useState<any>(null);
+  const [worldData, setWorldData] = useState<WorldData | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 

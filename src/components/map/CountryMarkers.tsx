@@ -1,15 +1,16 @@
 import React from 'react';
 import { 
-  tourismData, 
   DataCategory, 
   getTemperatureColor, 
   getRainfallColor 
-} from '@/data/tourismData';
+} from '@/data/tourismDataLoader';
+import { useTourismData } from '@/hooks';
+import { GeoProjection } from 'd3-geo';
 
 interface CountryMarkersProps {
   selectedMonth: string;
   selectedCategory: DataCategory;
-  projection: any;
+  projection: GeoProjection;
   onCountryHover: (event: React.MouseEvent, countryCode: string) => void;
   onCountryLeave: () => void;
 }
@@ -21,6 +22,12 @@ export const CountryMarkers: React.FC<CountryMarkersProps> = ({
   onCountryHover,
   onCountryLeave,
 }) => {
+  const { tourismData, loading } = useTourismData();
+
+  if (loading || !tourismData.length) {
+    return null;
+  }
+
   return (
     <>
       {/* Highlight countries with data - overlay markers */}
@@ -40,7 +47,7 @@ export const CountryMarkers: React.FC<CountryMarkersProps> = ({
               r="12"
               fill={color}
               stroke="white"
-              strokeWidth="2"
+              strokeWidth="1"
               className="cursor-pointer transition-all duration-300 hover:r-16"
               onMouseEnter={(e) => onCountryHover(e, country.code)}
               onMouseLeave={onCountryLeave}

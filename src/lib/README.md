@@ -5,21 +5,27 @@ This module contains utility functions and configurations for the world map func
 ## Modules
 
 ### `countryCodeMappings.ts`
+
 Handles country code conversions and mappings.
-- **Functions**: 
+
+- **Functions**:
   - `mapCountryCode(countryId)`: Maps various country ID formats to alpha-2 codes
   - `hasTourismData(countryCode)`: Checks if tourism data exists for a country
 - **Data**: Comprehensive country code mapping (Alpha-3, numeric, names)
 
 ### `mapProjection.ts`
+
 D3.js projection configuration and utilities.
+
 - **Functions**:
   - `createProjection(config)`: Creates configured D3 projection
   - `createPathGenerator(projection)`: Creates SVG path generator
 - **Constants**: `MAP_DIMENSIONS`, `DEFAULT_PROJECTION_CONFIG`
 
 ### `mapColors.ts`
+
 Color calculation logic for countries based on climate data.
+
 - **Functions**:
   - `getColorForCountry(countryId, month, category)`: Gets appropriate country color
   - `hasCountryData(countryId, month)`: Checks data availability
