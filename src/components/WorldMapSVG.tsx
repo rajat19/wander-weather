@@ -91,21 +91,16 @@ export const WorldMapSVG: React.FC<WorldMapSVGProps> = ({
             <OceanBackground />
 
             {/* Countries */}
-            {worldData.features.map((feature: CountryFeature) => {
+            {worldData.features.map((feature: CountryFeature, index) => {
               const countryPath = pathGenerator(feature as Feature);
               // Try multiple possible country identifiers
-              const countryId = feature.id || 
-                               feature.properties?.ISO_A3 || 
-                               feature.properties?.ADM0_A3 || 
-                               feature.properties?.ISO_A2 ||
-                               feature.properties?.NAME ||
-                               feature.properties?.NAME_EN;
+              const countryId = feature.id;
               const fillColor = getColorForCountry(countryId, selectedMonth, selectedCategory);
               const hasData = hasCountryData(countryId, selectedMonth);
               
               return (
                 <path
-                  key={countryId}
+                  key={`country-${countryId}-${index}`}
                   d={countryPath || ''}
                   fill={fillColor}
                   stroke="hsl(0, 0%, 100%)"
