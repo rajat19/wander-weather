@@ -3,7 +3,7 @@ import {
   DataCategory, 
   getTemperatureColor, 
   getRainfallColor 
-} from '@/data/tourismDataLoader';
+} from '@/lib/dataLoader';
 import { useTourismData } from '@/hooks';
 import { MapTooltip, TooltipData } from './MapTooltip';
 import { MapLegend } from './MapLegend';

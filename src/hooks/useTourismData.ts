@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
-import { CountryData, loadCountries, loadMonths } from '@/data/tourismDataLoader';
+import { loadCountries, loadMonths } from '@/lib/dataLoader';
+import { CountryData } from '@/types';
 
 interface UseTourismDataReturn {
   tourismData: CountryData[];

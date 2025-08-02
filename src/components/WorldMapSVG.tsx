@@ -1,8 +1,8 @@
 import React, { useRef } from 'react';
 import { Feature } from 'geojson';
-import { DataCategory } from '@/data/tourismDataLoader';
+import { DataCategory } from '@/lib/dataLoader';
 import { createProjection, createPathGenerator, MAP_DIMENSIONS, getColorForCountry, hasCountryData } from '@/lib';
-import { useWorldData, useMapInteractions, useMapZoom, useTourismData } from '@/hooks';
+import { useWorldData, useMapInteractions, useMapZoom, useTourismData, useFullscreen } from '@/hooks';
 import { CountryFeature } from '@/types';
 import { 
   MapTooltip, 
@@ -27,6 +27,7 @@ export const WorldMapSVG: React.FC<WorldMapSVGProps> = ({
   const { tourismData, loading: tourismDataLoading, error: tourismDataError } = useTourismData();
   const { tooltip, handleCountryHover, handleCountryLeave } = useMapInteractions(selectedMonth);
   const { containerRef, svgRef, zoomIn, zoomOut, resetZoom, currentZoom } = useMapZoom();
+  const { isFullscreen, toggleFullscreen } = useFullscreen();
 
   const projection = createProjection();
   const pathGenerator = createPathGenerator(projection);
@@ -120,6 +121,7 @@ export const WorldMapSVG: React.FC<WorldMapSVGProps> = ({
               projection={projection}
               onCountryHover={handleCountryHover}
               onCountryLeave={handleCountryLeave}
+              currentZoom={currentZoom}
             />
           </g>
         </svg>
@@ -130,6 +132,8 @@ export const WorldMapSVG: React.FC<WorldMapSVGProps> = ({
         onZoomIn={zoomIn}
         onZoomOut={zoomOut}
         onReset={resetZoom}
+        onToggleFullscreen={() => toggleFullscreen()}
+        isFullscreen={isFullscreen}
         currentZoom={currentZoom}
       />
 

@@ -1,5 +1,5 @@
 import { useState, useRef } from 'react';
-import { getCountriesData, mapCountryCode } from '@/data/tourismDataLoader';
+import { getCountriesData, mapCountryCode } from '@/lib/dataLoader';
 import { TooltipData } from '@/components/map/MapTooltip';
 
 export const useMapInteractions = (selectedMonth: string) => {
@@ -30,16 +30,19 @@ export const useMapInteractions = (selectedMonth: string) => {
     const relativeX = containerRect ? event.clientX - containerRect.left : event.clientX;
     const relativeY = containerRect ? event.clientY - containerRect.top : event.clientY;
     
-    setTooltip({
-      country: country.name,
-      avgDayTemp: data.avgDayTemp,
-      avgNightTemp: data.avgNightTemp,
-      rainfall: data.rainfall,
-      description: data.description || '',
-      bestTime: data.bestTime,
-      x: relativeX,
-      y: relativeY,
-    });
+            setTooltip({
+          country: country.name,
+          avgDayTemp: data.avgDayTemp,
+          avgNightTemp: data.avgNightTemp,
+          rainfall: data.rainfall,
+          description: data.description || '',
+          bestTime: data.bestTime,
+          x: relativeX,
+          y: relativeY,
+          // NEW: Pass regional data if available
+          regions: country.regions,
+          selectedMonth: selectedMonth,
+        });
   };
 
   const handleCountryLeave = () => {

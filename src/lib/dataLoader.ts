@@ -1,24 +1,4 @@
-// Tourism data loader with type safety
-export interface CountryData {
-  name: string;
-  code: string; // ISO Alpha-2 code
-  coordinates: [number, number]; // [lat, lng]
-  // Alternative country identifiers for mapping
-  alternativeCodes?: {
-    alpha3?: string; // ISO Alpha-3 code
-    numeric?: string; // ISO numeric code  
-    commonNames?: string[]; // Common alternative names
-  };
-  monthlyData: {
-    [month: string]: {
-      avgDayTemp: number; // Celsius
-      avgNightTemp: number; // Celsius
-      rainfall: number; // mm
-      description?: string;
-      bestTime: 'best' | 'okay' | 'avoid'; // Best time to visit rating
-    };
-  };
-}
+import { CountryData, MonthData } from '@/types';
 
 export type DataCategory = 'temperature' | 'rainfall' | 'bestTime';
 
@@ -151,3 +131,12 @@ export const getBestTimeColor = (bestTime: 'best' | 'okay' | 'avoid'): string =>
     default: return 'hsl(0, 0%, 80%)'; // Gray - No data
   }
 };
+
+export const getCategoryColor  = (category: DataCategory, monthData: MonthData) => {
+  switch (category) {
+    case 'temperature': return getTemperatureColor(monthData.avgDayTemp);
+    case 'rainfall': return getRainfallColor(monthData.rainfall);
+    case 'bestTime': return getBestTimeColor(monthData.bestTime);
+    default: return 'hsl(0, 0%, 80%)'; // Gray - No data
+  }
+}

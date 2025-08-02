@@ -1,6 +1,6 @@
 import React from 'react';
 import { Thermometer, Cloud, Calendar } from 'lucide-react';
-import { DataCategory } from '@/data/tourismDataLoader';
+import { DataCategory } from '@/lib/dataLoader';
 
 interface CategoryFilterProps {
   selectedCategory: DataCategory;

@@ -5,7 +5,7 @@ import {
   getRainfallColor,
   getBestTimeColor,
   mapCountryCode 
-} from '@/data/tourismDataLoader';
+} from '@/lib/dataLoader';
 
 /**
  * Gets the appropriate color for a country based on the selected category and month

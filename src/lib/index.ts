@@ -1,5 +1,5 @@
 // Barrel exports for lib utilities
-export { mapCountryCode, hasTourismData } from '../data/tourismDataLoader';
+export { mapCountryCode, hasTourismData } from './dataLoader';
 export { 
   createProjection, 
   createPathGenerator, 

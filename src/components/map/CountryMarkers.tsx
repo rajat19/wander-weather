@@ -1,10 +1,8 @@
 import React from 'react';
 import { 
-  DataCategory, 
-  getTemperatureColor, 
-  getRainfallColor,
-  getBestTimeColor 
-} from '@/data/tourismDataLoader';
+  DataCategory,
+  getCategoryColor
+} from '@/lib/dataLoader';
 import { useTourismData } from '@/hooks';
 import { GeoProjection } from 'd3-geo';
 
@@ -14,6 +12,7 @@ interface CountryMarkersProps {
   projection: GeoProjection;
   onCountryHover: (event: React.MouseEvent, countryCode: string) => void;
   onCountryLeave: () => void;
+  currentZoom?: number;
 }
 
 export const CountryMarkers: React.FC<CountryMarkersProps> = ({
@@ -22,6 +21,7 @@ export const CountryMarkers: React.FC<CountryMarkersProps> = ({
   projection,
   onCountryHover,
   onCountryLeave,
+  currentZoom = 1,
 }) => {
   const { tourismData, loading } = useTourismData();
 
@@ -36,14 +36,16 @@ export const CountryMarkers: React.FC<CountryMarkersProps> = ({
         const [lat, lng] = country.coordinates;  // coordinates are stored as [lat, lng]
         const [x, y] = projection([lng, lat]) || [0, 0];  // projection expects [lng, lat]
         const data = country.monthlyData[selectedMonth];
-        const color = selectedCategory === 'temperature' 
-          ? getTemperatureColor(data.avgDayTemp)
-          : selectedCategory === 'rainfall'
-          ? getRainfallColor(data.rainfall)
-          : getBestTimeColor(data.bestTime);
+        const color = getCategoryColor(selectedCategory, data);
+        
+        // Calculate inverse scale to counter zoom scaling
+        const inverseScale = 1 / currentZoom;
         
         return (
-          <g key={`marker-${country.code}`}>
+          <g 
+            key={`marker-${country.code}`}
+            transform={`translate(${x}, ${y}) scale(${inverseScale}) translate(${-x}, ${-y})`}
+          >
             <circle
               cx={x}
               cy={y}

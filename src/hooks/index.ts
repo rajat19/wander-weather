@@ -3,3 +3,4 @@ export { useMapInteractions } from './useMapInteractions';
 export { useWorldData } from './useWorldData';
 export { useMapZoom } from './useMapZoom';
 export { useTourismData } from './useTourismData';
+export { useFullscreen } from './useFullscreen';

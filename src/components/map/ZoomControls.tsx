@@ -1,10 +1,12 @@
 import React from 'react';
-import { ZoomIn, ZoomOut, RotateCcw } from 'lucide-react';
+import { ZoomIn, ZoomOut, RotateCcw, Maximize, Minimize } from 'lucide-react';
 
 interface ZoomControlsProps {
   onZoomIn: () => void;
   onZoomOut: () => void;
   onReset: () => void;
+  onToggleFullscreen: () => void;
+  isFullscreen: boolean;
   currentZoom: number;
 }
 
@@ -12,6 +14,8 @@ export const ZoomControls: React.FC<ZoomControlsProps> = ({
   onZoomIn,
   onZoomOut,
   onReset,
+  onToggleFullscreen,
+  isFullscreen,
   currentZoom,
 }) => {
   return (
@@ -28,7 +32,7 @@ export const ZoomControls: React.FC<ZoomControlsProps> = ({
       <button
         onClick={onZoomOut}
         className="p-2 hover:bg-gray-100 rounded-md transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
-        disabled={currentZoom <= 0.5}
+        disabled={currentZoom <= 1.01}
         title="Zoom Out"
       >
         <ZoomOut size={18} />
@@ -42,6 +46,16 @@ export const ZoomControls: React.FC<ZoomControlsProps> = ({
         title="Reset Zoom"
       >
         <RotateCcw size={18} />
+      </button>
+      
+      <div className="border-t border-gray-300 mx-1"></div>
+      
+      <button
+        onClick={onToggleFullscreen}
+        className="p-2 hover:bg-gray-100 rounded-md transition-colors duration-200"
+        title={isFullscreen ? "Exit Fullscreen" : "Enter Fullscreen"}
+      >
+        {isFullscreen ? <Minimize size={18} /> : <Maximize size={18} />}
       </button>
       
       {/* Zoom level indicator */}
