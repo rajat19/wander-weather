@@ -51,7 +51,6 @@ export const CountryMarkers: React.FC<CountryMarkersProps> = ({
               className="cursor-pointer transition-all duration-300 hover:r-16"
               onMouseEnter={(e) => onCountryHover(e, country.code)}
               onMouseLeave={onCountryLeave}
-              onMouseMove={(e) => onCountryHover(e, country.code)}
             />
             <text
               x={x}

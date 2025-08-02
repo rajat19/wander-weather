@@ -1,9 +1,10 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { getCountriesData, mapCountryCode } from '@/data/tourismDataLoader';
 import { TooltipData } from '@/components/map/MapTooltip';
 
 export const useMapInteractions = (selectedMonth: string) => {
   const [tooltip, setTooltip] = useState<TooltipData | null>(null);
+  const lastCountryId = useRef<string | null>(null);
 
   const handleCountryHover = (
     event: React.MouseEvent, 
@@ -15,6 +16,11 @@ export const useMapInteractions = (selectedMonth: string) => {
     
     if (!country || !country.monthlyData[selectedMonth]) return;
 
+    // Only update if we're hovering over a different country
+    // This prevents unnecessary re-renders and position jumping
+    if (lastCountryId.current === countryId) return;
+    
+    lastCountryId.current = countryId;
     const data = country.monthlyData[selectedMonth];
     
     // Get the map container position to calculate relative coordinates
@@ -31,12 +37,13 @@ export const useMapInteractions = (selectedMonth: string) => {
       rainfall: data.rainfall,
       description: data.description || '',
       x: relativeX,
-      y: relativeY - 10,
+      y: relativeY,
     });
   };
 
   const handleCountryLeave = () => {
     setTooltip(null);
+    lastCountryId.current = null; // Reset to allow re-entering the same country
   };
 
   return {

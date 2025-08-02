@@ -1,5 +1,5 @@
 import React from 'react';
-import { DataCategory } from '@/data/tourismData';
+import { DataCategory } from '@/data/tourismDataLoader';
 
 interface MapInfoProps {
   selectedMonth: string;

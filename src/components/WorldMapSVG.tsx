@@ -110,7 +110,6 @@ export const WorldMapSVG: React.FC<WorldMapSVGProps> = ({
                   }`}
                   onMouseEnter={(e) => handleCountryHover(e, countryId)}
                   onMouseLeave={handleCountryLeave}
-                  onMouseMove={(e) => handleCountryHover(e, countryId)}
                 />
               );
             })}
