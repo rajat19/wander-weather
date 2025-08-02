@@ -26,24 +26,29 @@ export const TourismDashboard: React.FC = () => {
 
       {/* Main Content */}
       <main className="container mx-auto px-4 space-y-8">
-        {/* Month Selector */}
-        <MonthSelector
-          selectedMonth={selectedMonth}
-          onMonthSelect={setSelectedMonth}
-        />
-
         {/* Category Filter */}
         <CategoryFilter
           selectedCategory={selectedCategory}
           onCategorySelect={setSelectedCategory}
         />
 
-        {/* World Map */}
-        <div className="max-w-7xl mx-auto">
-          <WorldMapSVG
-            selectedMonth={selectedMonth}
-            selectedCategory={selectedCategory}
-          />
+        {/* Map and Month Selector Layout */}
+        <div className="flex flex-col lg:flex-row gap-6 max-w-7xl mx-auto">
+          {/* Month Selector - Left Side */}
+          <div className="lg:w-64 flex-shrink-0">
+            <MonthSelector
+              selectedMonth={selectedMonth}
+              onMonthSelect={setSelectedMonth}
+            />
+          </div>
+
+          {/* World Map - Right Side */}
+          <div className="flex-1">
+            <WorldMapSVG
+              selectedMonth={selectedMonth}
+              selectedCategory={selectedCategory}
+            />
+          </div>
         </div>
 
         {/* Info Section */}
