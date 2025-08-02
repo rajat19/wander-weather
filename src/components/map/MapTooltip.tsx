@@ -39,7 +39,7 @@ export const MapTooltip: React.FC<MapTooltipProps> = ({
   const tooltipWidth = 320;
   
   // Check if tooltip would be in bottom half of map
-  const isBottomHalf = tooltip.y > maxHeight * 0.6;
+  const isBottomHalf = tooltip.y > maxHeight * 0.4;
   
   // Calculate positioning with better logic
   const leftPos = Math.min(Math.max(tooltip.x - tooltipWidth / 2, 15), maxWidth - tooltipWidth - 15);

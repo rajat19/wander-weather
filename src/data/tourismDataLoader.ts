@@ -31,7 +31,7 @@ export const loadCountries = async (): Promise<CountryData[]> => {
   }
 
   try {
-    const response = await fetch('/data/countries.json');
+    const response = await fetch(`${import.meta.env.BASE_URL}data/countries.json`);
     if (!response.ok) {
       throw new Error(`Failed to load tourism data: ${response.status}`);
     }
