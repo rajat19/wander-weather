@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { loadCountries, loadMonths } from '@/lib/dataLoader';
+import { loadCountries, loadMonths } from '@/lib/firebaseDataLoader';
 import { CountryData } from '@/types';
 
 interface UseTourismDataReturn {

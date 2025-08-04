@@ -1,5 +1,5 @@
 import React from 'react';
-import { DataCategory } from '@/lib/dataLoader';
+import { DataCategory } from '@/lib/firebaseDataLoader';
 
 interface MapInfoProps {
   selectedMonth: string;

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Thermometer, Cloud, Calendar } from 'lucide-react';
-import { DataCategory } from '@/lib/dataLoader';
+import { DataCategory } from '@/lib/firebaseDataLoader';
 
 interface CategoryFilterProps {
   selectedCategory: DataCategory;

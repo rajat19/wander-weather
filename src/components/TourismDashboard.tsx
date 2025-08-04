@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { MonthSelector } from './MonthSelector';
 import { CategoryFilter } from './CategoryFilter';
 import { WorldMapSVG } from './WorldMapSVG';
-import { DataCategory } from '@/lib/dataLoader';
+import { DataCategory } from '@/lib/firebaseDataLoader';
 import { useFullscreen } from '@/hooks';
 import { Globe, TrendingUp } from 'lucide-react';
 

@@ -1,5 +1,5 @@
 import { useState, useRef } from 'react';
-import { getCountriesData, mapCountryCode } from '@/lib/dataLoader';
+import { getCountriesData, mapCountryCode } from '@/lib/firebaseDataLoader';
 import { TooltipData } from '@/components/map/MapTooltip';
 
 export const useMapInteractions = (selectedMonth: string) => {

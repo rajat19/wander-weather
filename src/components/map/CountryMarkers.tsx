@@ -2,7 +2,7 @@ import React from 'react';
 import { 
   DataCategory,
   getCategoryColor
-} from '@/lib/dataLoader';
+} from '@/lib/firebaseDataLoader';
 import { useTourismData } from '@/hooks';
 import { GeoProjection } from 'd3-geo';
 

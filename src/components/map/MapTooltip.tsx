@@ -1,6 +1,6 @@
 import React from 'react';
 import { getWeatherCondition, getRainfallLevel, getTemperatureFeeling } from '@/lib/weatherUtils';
-import { RegionalData } from '@/lib/dataLoader';
+import { RegionalData } from '@/lib/firebaseDataLoader';
 
 export interface TooltipData {
   country: string;

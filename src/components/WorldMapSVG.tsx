@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import { Feature } from 'geojson';
-import { DataCategory } from '@/lib/dataLoader';
+import { DataCategory } from '@/lib/firebaseDataLoader';
 import { createProjection, createPathGenerator, MAP_DIMENSIONS, getColorForCountry, hasCountryData } from '@/lib';
 import { useWorldData, useMapInteractions, useMapZoom, useTourismData, useFullscreen } from '@/hooks';
 import { CountryFeature } from '@/types';

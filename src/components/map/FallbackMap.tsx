@@ -3,7 +3,7 @@ import {
   DataCategory, 
   getTemperatureColor, 
   getRainfallColor 
-} from '@/lib/dataLoader';
+} from '@/lib/firebaseDataLoader';
 import { useTourismData } from '@/hooks';
 import { MapTooltip, TooltipData } from './MapTooltip';
 import { MapLegend } from './MapLegend';

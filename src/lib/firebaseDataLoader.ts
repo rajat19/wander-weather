@@ -1,83 +1,61 @@
+import { collection, getDocs, doc, getDoc, query, orderBy } from "firebase/firestore";
+import { db } from "./firebase";
 import { CountryData, MonthData } from '@/types';
-import { loadCountries as loadCountriesFromFirebase, loadCountryByCode as loadCountryByCodeFromFirebase } from './firebaseDataLoader';
 
 export type DataCategory = 'temperature' | 'rainfall' | 'bestTime';
 
 // Cache for loaded data
 let cachedData: CountryData[] | null = null;
-let useFirebase = true; // Flag to control data source
 
-// Load tourism data with Firebase as primary source, JSON as fallback
+// Load tourism data from Firebase Firestore
 export const loadCountries = async (): Promise<CountryData[]> => {
   if (cachedData) {
-    console.log("📦 Using cached data (source: " + (useFirebase ? "Firebase" : "JSON") + ")");
     return cachedData;
   }
 
-  // Try Firebase first
-  if (useFirebase) {
-    try {
-      console.log("🔥 Attempting to load countries from Firebase...");
-      const countries = await loadCountriesFromFirebase();
-      if (countries.length > 0) {
-        console.log("✅ Successfully loaded " + countries.length + " countries from Firebase");
-        cachedData = countries;
-        return countries;
-      } else {
-        console.warn("⚠️ Firebase returned empty data, falling back to JSON");
-        useFirebase = false;
-      }
-    } catch (error) {
-      console.warn("❌ Failed to load from Firebase, falling back to JSON:", error);
-      useFirebase = false;
-    }
-  }
-
-  // Fallback to JSON
   try {
-    console.log("📄 Loading countries from JSON file...");
-    const response = await fetch(`${import.meta.env.BASE_URL}data/countries.json`);
-    if (!response.ok) {
-      throw new Error(`Failed to load tourism data: ${response.status}`);
-    }
+    const countriesCollection = collection(db, "countries");
+    const countriesQuery = query(countriesCollection, orderBy("name"));
+    const querySnapshot = await getDocs(countriesQuery);
     
-    const countries: CountryData[] = await response.json();
+    const countries: CountryData[] = [];
+    
+    querySnapshot.forEach((doc) => {
+      const data = doc.data();
+      // Remove Firebase-specific fields before returning
+      const { createdAt, updatedAt, ...countryData } = data;
+      countries.push(countryData as CountryData);
+    });
     
     // Validate the data structure
     if (!Array.isArray(countries)) {
       throw new Error('Invalid tourism data format: missing countries array');
     }
-
-    console.log("✅ Successfully loaded " + countries.length + " countries from JSON");
-    
     // Cache the data
     cachedData = countries;
     
     return countries;
   } catch (error) {
-    console.error('❌ Error loading tourism data:', error);
-    // Return empty array as fallback
     return [];
   }
 };
 
 // Load a single country by code
 export const loadCountryByCode = async (countryCode: string): Promise<CountryData | null> => {
-  // Try Firebase first
-  if (useFirebase) {
-    try {
-      const country = await loadCountryByCodeFromFirebase(countryCode);
-      if (country) {
-        return country;
-      }
-    } catch (error) {
-      console.warn(`Failed to load country ${countryCode} from Firebase:`, error);
+  try {
+    const countryDoc = doc(db, "countries", countryCode);
+    const docSnap = await getDoc(countryDoc);
+    
+    if (docSnap.exists()) {
+      const data = docSnap.data();
+      const { createdAt, updatedAt, ...countryData } = data;
+      return countryData as CountryData;
+    } else {
+      return null;
     }
+  } catch (error) {
+    return null;
   }
-
-  // Fallback: load all countries and find the one we need
-  const countries = await loadCountries();
-  return countries.find(country => country.code === countryCode) || null;
 };
 
 // Load months array
@@ -91,7 +69,6 @@ export const loadMonths = async (): Promise<string[]> => {
 // Synchronous access to cached data (for compatibility)
 export const getCountriesData = (): CountryData[] => {
   if (!cachedData) {
-    console.warn('Countries data not loaded yet. Call loadCountries() first.');
     return [];
   }
   return cachedData;
@@ -184,4 +161,4 @@ export const getCategoryColor  = (category: DataCategory, monthData: MonthData) 
     case 'bestTime': return getBestTimeColor(monthData.bestTime);
     default: return 'hsl(0, 0%, 80%)'; // Gray - No data
   }
-}
+} 

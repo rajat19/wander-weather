@@ -5,7 +5,7 @@ import {
   getRainfallColor,
   getBestTimeColor,
   mapCountryCode 
-} from '@/lib/dataLoader';
+} from '@/lib/firebaseDataLoader';
 
 /**
  * Gets the appropriate color for a country based on the selected category and month
