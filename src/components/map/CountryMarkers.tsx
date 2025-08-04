@@ -1,8 +1,8 @@
 import React from 'react';
 import { 
   DataCategory,
-  getCategoryColor
-} from '@/lib/firebaseDataLoader';
+  getCategoryColor,
+} from '@/lib';
 import { useTourismData } from '@/hooks';
 import { GeoProjection } from 'd3-geo';
 
@@ -33,8 +33,20 @@ export const CountryMarkers: React.FC<CountryMarkersProps> = ({
     <>
       {/* Highlight countries with data - overlay markers */}
       {tourismData.map((country) => {
+        if (!country.coordinates) {
+          console.log(`No coordinates found for ${country.name}`);
+          return null;
+        }
         const [lat, lng] = country.coordinates;  // coordinates are stored as [lat, lng]
         const [x, y] = projection([lng, lat]) || [0, 0];  // projection expects [lng, lat]
+        if (!country.monthlyData) {
+          console.log(`No monthly data found for ${country.name}`);
+          return null;
+        }
+        if (!country.monthlyData.hasOwnProperty(selectedMonth)) {
+          console.log(`No data for ${selectedMonth} found for ${country.name}`);
+          return null;
+        }
         const data = country.monthlyData[selectedMonth];
         const color = getCategoryColor(selectedCategory, data);
         

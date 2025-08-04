@@ -1,12 +1,11 @@
 import React from 'react';
 import { 
-  DataCategory, 
-  getTemperatureColor, 
-  getRainfallColor 
+  DataCategory,
 } from '@/lib/firebaseDataLoader';
 import { useTourismData } from '@/hooks';
 import { MapTooltip, TooltipData } from './MapTooltip';
 import { MapLegend } from './MapLegend';
+import { getTemperatureColor, getRainfallColor } from '@/lib/mapColors';
 
 interface FallbackMapProps {
   selectedMonth: string;

@@ -11,10 +11,7 @@
     "build": "vite build",
     "build:dev": "vite build --mode development",
     "lint": "eslint .",
-    "preview": "vite preview",
-    "upload-countries": "tsx scripts/uploadCountriesToFirebase.ts",
-    "test-firebase": "tsx scripts/testFirebaseConnection.ts",
-    "test-data-source": "tsx scripts/testDataSource.ts"
+    "preview": "vite preview"
   },
   "dependencies": {
     "@tanstack/react-query": "^5.56.2",
