@@ -19,47 +19,47 @@ export const ZoomControls: React.FC<ZoomControlsProps> = ({
   currentZoom,
 }) => {
   return (
-    <div className="absolute top-4 right-4 flex flex-col gap-2 bg-white/90 backdrop-blur-sm rounded-lg p-2 shadow-lg">
+    <div className="absolute top-2 sm:top-4 right-2 sm:right-4 flex flex-col gap-1 sm:gap-2 bg-white/90 backdrop-blur-sm rounded-lg p-1 sm:p-2 shadow-lg">
       <button
         onClick={onZoomIn}
-        className="p-2 hover:bg-gray-100 rounded-md transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+        className="p-2 sm:p-2 hover:bg-gray-100 rounded-md transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed touch-manipulation"
         disabled={currentZoom >= 8}
         title="Zoom In"
       >
-        <ZoomIn size={18} />
+        <ZoomIn size={16} className="sm:w-[18px] sm:h-[18px]" />
       </button>
       
       <button
         onClick={onZoomOut}
-        className="p-2 hover:bg-gray-100 rounded-md transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+        className="p-2 sm:p-2 hover:bg-gray-100 rounded-md transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed touch-manipulation"
         disabled={currentZoom <= 1.01}
         title="Zoom Out"
       >
-        <ZoomOut size={18} />
+        <ZoomOut size={16} className="sm:w-[18px] sm:h-[18px]" />
       </button>
       
       <div className="border-t border-gray-300 mx-1"></div>
       
       <button
         onClick={onReset}
-        className="p-2 hover:bg-gray-100 rounded-md transition-colors duration-200"
+        className="p-2 sm:p-2 hover:bg-gray-100 rounded-md transition-colors duration-200 touch-manipulation"
         title="Reset Zoom"
       >
-        <RotateCcw size={18} />
+        <RotateCcw size={16} className="sm:w-[18px] sm:h-[18px]" />
       </button>
       
       <div className="border-t border-gray-300 mx-1"></div>
       
       <button
         onClick={onToggleFullscreen}
-        className="p-2 hover:bg-gray-100 rounded-md transition-colors duration-200"
+        className="p-2 sm:p-2 hover:bg-gray-100 rounded-md transition-colors duration-200 touch-manipulation"
         title={isFullscreen ? "Exit Fullscreen" : "Enter Fullscreen"}
       >
-        {isFullscreen ? <Minimize size={18} /> : <Maximize size={18} />}
+        {isFullscreen ? <Minimize size={16} className="sm:w-[18px] sm:h-[18px]" /> : <Maximize size={16} className="sm:w-[18px] sm:h-[18px]" />}
       </button>
       
       {/* Zoom level indicator */}
-      <div className="text-xs text-center text-gray-600 font-mono px-1">
+      <div className="text-xs text-center text-gray-600 font-mono px-1 py-1">
         {Math.round(currentZoom * 100)}%
       </div>
     </div>

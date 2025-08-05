@@ -133,6 +133,25 @@
     scroll-behavior: smooth;
   }
 
+  /* Mobile-specific improvements */
+  @media (max-width: 640px) {
+    /* Prevent zoom on input focus */
+    input, select, textarea {
+      font-size: 16px !important;
+    }
+    
+    /* Improve touch targets */
+    button, [role="button"] {
+      min-height: 44px;
+      min-width: 44px;
+    }
+    
+    /* Better touch scrolling */
+    .touch-scroll {
+      -webkit-overflow-scrolling: touch;
+    }
+  }
+
   /* Custom button variants */
   .btn-pill {
     @apply px-6 py-2 rounded-full font-medium transition-all duration-300;
@@ -163,5 +182,18 @@
 
   .rainfall-gradient {
     background: var(--gradient-rainfall);
+  }
+
+  /* Mobile touch improvements */
+  .touch-manipulation {
+    touch-action: manipulation;
+  }
+
+  /* Prevent text selection on interactive elements */
+  .no-select {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
   }
 }

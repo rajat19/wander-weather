@@ -25,7 +25,7 @@ export const WorldMapSVG: React.FC<WorldMapSVGProps> = ({
 }) => {
   const { worldData, loading: worldDataLoading, error: worldDataError } = useWorldData();
   const { tourismData, loading: tourismDataLoading, error: tourismDataError } = useTourismData();
-  const { tooltip, handleCountryHover, handleCountryLeave } = useMapInteractions(selectedMonth);
+  const { tooltip, handleCountryHover, handleCountryLeave, handleTouchStart, handleTouchEnd } = useMapInteractions(selectedMonth);
   const { containerRef, svgRef, zoomIn, zoomOut, resetZoom, currentZoom } = useMapZoom();
   const { isFullscreen, toggleFullscreen } = useFullscreen();
 
@@ -39,7 +39,7 @@ export const WorldMapSVG: React.FC<WorldMapSVGProps> = ({
   // Show loading state
   if (loading) {
     return (
-      <div className="relative w-full h-[700px] bg-blue-100 rounded-lg overflow-hidden shadow-lg flex items-center justify-center">
+      <div className="relative w-full h-full bg-blue-100 rounded-lg overflow-hidden shadow-lg flex items-center justify-center">
         <div className="text-center">
           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
           <p className="text-gray-600">Loading climate data...</p>
@@ -51,7 +51,7 @@ export const WorldMapSVG: React.FC<WorldMapSVGProps> = ({
   // Show error state
   if (error) {
     return (
-      <div className="relative w-full h-[700px] bg-red-50 rounded-lg overflow-hidden shadow-lg flex items-center justify-center">
+      <div className="relative w-full h-full bg-red-50 rounded-lg overflow-hidden shadow-lg flex items-center justify-center">
         <div className="text-center text-red-600">
           <p className="font-semibold mb-2">Error loading data</p>
           <p className="text-sm">{error}</p>
@@ -111,6 +111,8 @@ export const WorldMapSVG: React.FC<WorldMapSVGProps> = ({
                   }`}
                   onMouseEnter={(e) => handleCountryHover(e, countryId)}
                   onMouseLeave={handleCountryLeave}
+                  onTouchStart={(e) => handleTouchStart(e, countryId)}
+                  onTouchEnd={handleTouchEnd}
                 />
               );
             })}

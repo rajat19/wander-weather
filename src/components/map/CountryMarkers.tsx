@@ -10,7 +10,7 @@ interface CountryMarkersProps {
   selectedMonth: string;
   selectedCategory: DataCategory;
   projection: GeoProjection;
-  onCountryHover: (event: React.MouseEvent, countryCode: string) => void;
+  onCountryHover: (event: React.MouseEvent | React.TouchEvent, countryCode: string) => void;
   onCountryLeave: () => void;
   currentZoom?: number;
 }
@@ -65,9 +65,17 @@ export const CountryMarkers: React.FC<CountryMarkersProps> = ({
               fill={color}
               stroke="white"
               strokeWidth="1"
-              className="cursor-pointer transition-all duration-300 hover:r-16"
+              className="cursor-pointer transition-all duration-300 hover:r-16 touch-manipulation"
               onMouseEnter={(e) => onCountryHover(e, country.code)}
               onMouseLeave={onCountryLeave}
+              onTouchStart={(e) => {
+                e.preventDefault();
+                onCountryHover(e, country.code);
+              }}
+              onTouchEnd={(e) => {
+                e.preventDefault();
+                onCountryLeave();
+              }}
             />
             <text
               x={x}
