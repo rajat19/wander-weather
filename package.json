@@ -3,6 +3,7 @@
   "private": true,
   "version": "0.0.1",
   "type": "module",
+  "license": "MIT",
   "homepage": "https://geek-paradox.github.io/wander-month-map/",
   "scripts": {
     "predeploy": "npm run build",

@@ -4,7 +4,7 @@ import path from "path";
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
-  base: '/wander-month-map/',
+  base: '/wander-weather/',
   server: {
     host: "::",
     port: 8080,

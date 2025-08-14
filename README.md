@@ -1,54 +1,12 @@
-# Welcome to your Lovable project
+# Welcome to Wander Weather
 
-## Project info
+## Project Info
 
-**URL**: https://lovable.dev/projects/2268c847-3c78-4322-be1b-9528139f1eff
+The website was designed over [Lovable](https://lovable.dev) and then modified locally
 
-## How can I edit this code?
+Provides user a world map that showcases each month and the temperature, rainfall and best time to visit a particular country so that user can take a decision before planning any trip
 
-There are several ways of editing your application.
-
-**Use Lovable**
-
-Simply visit the [Lovable Project](https://lovable.dev/projects/2268c847-3c78-4322-be1b-9528139f1eff) and start prompting.
-
-Changes made via Lovable will be committed automatically to this repo.
-
-**Use your preferred IDE**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
-
-**Edit a file directly in GitHub**
-
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
-
-**Use GitHub Codespaces**
-
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+_Note: The map used might not be 100% correct as rendered via libraries. Don't sue me if you find country of your map not correct_
 
 ## What technologies are used for this project?
 
@@ -57,17 +15,83 @@ This project is built with:
 - Vite
 - TypeScript
 - React
-- shadcn-ui
 - Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/2268c847-3c78-4322-be1b-9528139f1eff) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+- Firebase
+ 
+ ## Getting Started
+ 
+ ### Prerequisites
+ 
+ - Node.js 18+ and npm 9+
+ 
+ ### Installation
+ 
+ ```bash
+ npm install
+ ```
+ 
+ ### Development
+ 
+ ```bash
+ npm run dev
+ ```
+ 
+ Vite will print a local URL in the terminal to open the app.
+ 
+ ### Build
+ 
+ ```bash
+ npm run build
+ ```
+ 
+ ### Preview (after build)
+ 
+ ```bash
+ npm run preview
+ ```
+ 
+ ### Deploy (GitHub Pages)
+ 
+ ```bash
+ npm run deploy
+ ```
+ 
+ ## Available Scripts
+ 
+ - `dev`: Start the Vite dev server
+ - `build`: Production build
+ - `build:dev`: Development-mode build
+ - `preview`: Preview the production build locally
+ - `lint`: Run ESLint
+ - `deploy`: Publish `dist/` to GitHub Pages
+ 
+ ## Contributing
+ 
+ Contributions are welcome! To get started:
+ 
+ 1. Fork the repository and create your feature branch:
+    ```bash
+    git checkout -b feat/your-feature
+    ```
+ 2. Install dependencies and run the dev server:
+    ```bash
+    npm install
+    npm run dev
+    ```
+ 3. Make your changes, keeping code clear and typed. Prefer descriptive names and early returns.
+ 4. Run linting and ensure the app builds:
+    ```bash
+    npm run lint
+    npm run build
+    ```
+ 5. Commit using meaningful messages and open a Pull Request against `main`.
+ 
+ Guidelines:
+ - Keep components small and focused.
+ - Avoid deep nesting; handle edge cases early.
+ - Match existing formatting and Tailwind conventions.
+ - Include types for public APIs and props.
+ 
+ ## License
+ 
+ This project is licensed under the MIT License — see the `LICENSE` file for details.
