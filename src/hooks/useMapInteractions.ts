@@ -1,8 +1,23 @@
 import { useState, useRef } from 'react';
 import { getCountriesData, mapCountryCode } from '@/lib/firebaseDataLoader';
 import { TooltipData } from '@/components/map/MapTooltip';
+import { VisaCategory } from '@/lib/visa';
 
-export const useMapInteractions = (selectedMonth: string) => {
+interface UseMapInteractionsOptions {
+  selectedMonth: string;
+  visaData?: {
+    byPassport: Record<string, Record<string, VisaCategory>>;
+    selectedPassportIso3?: string;
+    passportCountryName?: string;
+    numericToIso3: Record<string, string>;
+  };
+}
+
+export const useMapInteractions = (options: UseMapInteractionsOptions | string) => {
+  // Support both old signature (just month string) and new signature (options object)
+  const selectedMonth = typeof options === 'string' ? options : options.selectedMonth;
+  const visaData = typeof options === 'string' ? undefined : options.visaData;
+  
   const [tooltip, setTooltip] = useState<TooltipData | null>(null);
   const lastCountryId = useRef<string | null>(null);
   const touchTimeoutRef = useRef<NodeJS.Timeout | null>(null);
@@ -44,6 +59,21 @@ export const useMapInteractions = (selectedMonth: string) => {
     const relativeX = containerRect ? clientX - containerRect.left : clientX;
     const relativeY = containerRect ? clientY - containerRect.top : clientY;
     
+    // Get visa requirement if in visa mode
+    let visaRequirement: VisaCategory | undefined;
+    if (visaData?.selectedPassportIso3) {
+      // Try to get ISO3 for the hovered country
+      const iso3Prop = mapCountryCode(countryId); // This might not give ISO3, so we need to check
+      // For better matching, check if we can get ISO3 from numeric ID
+      const numericId = String(countryId);
+      const iso3 = visaData.numericToIso3[numericId] || iso3Prop;
+      
+      if (iso3) {
+        const visaMap = visaData.byPassport[visaData.selectedPassportIso3] || {};
+        visaRequirement = visaMap[iso3] || 'n/a';
+      }
+    }
+    
     setTooltip({
       country: country.name,
       avgDayTemp: data.avgDayTemp,
@@ -56,6 +86,9 @@ export const useMapInteractions = (selectedMonth: string) => {
       // NEW: Pass regional data if available
       regions: country.regions,
       selectedMonth: selectedMonth,
+      // NEW: Pass visa data if available
+      visaRequirement,
+      passportCountry: visaData?.passportCountryName,
     });
   };
 

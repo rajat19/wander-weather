@@ -1,5 +1,6 @@
 import React from 'react';
 import { DataCategory } from '@/lib/firebaseDataLoader';
+import { VISA_COLORS, HOME_COUNTRY_COLOR } from '@/lib/visa';
 
 interface MapLegendProps {
   selectedCategory: DataCategory;
@@ -17,7 +18,9 @@ export const MapLegend: React.FC<MapLegendProps> = ({
           ? 'Temperature (°C)' 
           : selectedCategory === 'rainfall' 
           ? 'Rainfall (mm)'
-          : 'Best time to visit'}
+          : selectedCategory === 'bestTime'
+          ? 'Best time to visit'
+          : 'Visa requirements'}
       </h3>
       <div className="flex items-center gap-1 sm:gap-2 text-xs">
         {selectedCategory === 'temperature' ? (
@@ -30,7 +33,7 @@ export const MapLegend: React.FC<MapLegendProps> = ({
             <div className="w-3 sm:w-4 h-2 sm:h-3 bg-gradient-to-r from-gray-300 to-blue-600 rounded"></div>
             <span>Low → High</span>
           </>
-        ) : (
+        ) : selectedCategory === 'bestTime' ? (
           <div className="space-y-1">
             <div className="flex items-center gap-1 sm:gap-2">
               <div className="w-2 sm:w-3 h-2 sm:h-3 bg-green-500 rounded"></div>
@@ -43,6 +46,37 @@ export const MapLegend: React.FC<MapLegendProps> = ({
             <div className="flex items-center gap-1 sm:gap-2">
               <div className="w-2 sm:w-3 h-2 sm:h-3 bg-red-500 rounded"></div>
               <span>Avoid</span>
+            </div>
+          </div>
+        ) : (
+          <div className="space-y-1">
+            <div className="flex items-center gap-1 sm:gap-2">
+              <div className="w-2 sm:w-3 h-2 sm:h-3 rounded" style={{ backgroundColor: HOME_COUNTRY_COLOR }}></div>
+              <span className="font-semibold">Your country</span>
+            </div>
+            <div className="flex items-center gap-1 sm:gap-2">
+              <div className="w-2 sm:w-3 h-2 sm:h-3 rounded" style={{ backgroundColor: VISA_COLORS.free }}></div>
+              <span>Visa-free</span>
+            </div>
+            <div className="flex items-center gap-1 sm:gap-2">
+              <div className="w-2 sm:w-3 h-2 sm:h-3 rounded" style={{ backgroundColor: VISA_COLORS.voa }}></div>
+              <span>Visa on arrival</span>
+            </div>
+            <div className="flex items-center gap-1 sm:gap-2">
+              <div className="w-2 sm:w-3 h-2 sm:h-3 rounded" style={{ backgroundColor: VISA_COLORS.evisa }}></div>
+              <span>eVisa/ETA</span>
+            </div>
+            <div className="flex items-center gap-1 sm:gap-2">
+              <div className="w-2 sm:w-3 h-2 sm:h-3 rounded" style={{ backgroundColor: VISA_COLORS.sticker }}></div>
+              <span>Sticker visa</span>
+            </div>
+            <div className="flex items-center gap-1 sm:gap-2">
+              <div className="w-2 sm:w-3 h-2 sm:h-3 rounded" style={{ backgroundColor: VISA_COLORS.none }}></div>
+              <span>No admission</span>
+            </div>
+            <div className="flex items-center gap-1 sm:gap-2">
+              <div className="w-2 sm:w-3 h-2 sm:h-3 rounded" style={{ backgroundColor: VISA_COLORS['n/a'] }}></div>
+              <span>No data</span>
             </div>
           </div>
         )}

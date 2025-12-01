@@ -2,7 +2,7 @@ import { collection, getDocs, doc, getDoc, query, orderBy } from "firebase/fires
 import { db } from "./firebase";
 import { CountryData, MonthData } from '@/types';
 
-export type DataCategory = 'temperature' | 'rainfall' | 'bestTime';
+export type DataCategory = 'temperature' | 'rainfall' | 'bestTime' | 'visa';
 
 // Cache for loaded data
 let cachedData: CountryData[] | null = null;

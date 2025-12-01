@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useMemo, useRef } from 'react';
 import { Feature } from 'geojson';
 import { DataCategory } from '@/lib/firebaseDataLoader';
 import { createProjection, createPathGenerator, MAP_DIMENSIONS, getColorForCountry, hasCountryData } from '@/lib';
@@ -13,19 +13,36 @@ import {
   OceanBackground,
   ZoomControls 
 } from '@/components/map';
+import { useVisaData } from '@/hooks/useVisaData';
+import { getVisaColor, buildNumericToIso3Map } from '@/lib/visa';
 
 interface WorldMapSVGProps {
   selectedMonth: string;
   selectedCategory: DataCategory;
+  selectedPassportIso3?: string;
 }
 
 export const WorldMapSVG: React.FC<WorldMapSVGProps> = ({
   selectedMonth,
   selectedCategory,
+  selectedPassportIso3,
 }) => {
   const { worldData, loading: worldDataLoading, error: worldDataError } = useWorldData();
   const { tourismData, loading: tourismDataLoading, error: tourismDataError } = useTourismData();
-  const { tooltip, handleCountryHover, handleCountryLeave, handleTouchStart, handleTouchEnd } = useMapInteractions(selectedMonth);
+  const { byPassport, iso3ToName } = useVisaData();
+  const numericToIso3 = useMemo(() => buildNumericToIso3Map(), []);
+  
+  // Pass visa data to map interactions when in visa mode
+  const { tooltip, handleCountryHover, handleCountryLeave, handleTouchStart, handleTouchEnd } = useMapInteractions({
+    selectedMonth,
+    visaData: selectedCategory === 'visa' && selectedPassportIso3 ? {
+      byPassport,
+      selectedPassportIso3,
+      passportCountryName: iso3ToName[selectedPassportIso3],
+      numericToIso3,
+    } : undefined,
+  });
+  
   const { containerRef, svgRef, zoomIn, zoomOut, resetZoom, currentZoom } = useMapZoom();
   const { isFullscreen, toggleFullscreen } = useFullscreen();
 
@@ -96,8 +113,28 @@ export const WorldMapSVG: React.FC<WorldMapSVGProps> = ({
               const countryPath = pathGenerator(feature as Feature);
               // Try multiple possible country identifiers
               const countryId = feature.id;
-              const fillColor = getColorForCountry(countryId, selectedMonth, selectedCategory);
-              const hasData = hasCountryData(countryId, selectedMonth);
+              let fillColor: string;
+              let hasData: boolean;
+
+              if (selectedCategory === 'visa' && selectedPassportIso3) {
+                const iso3Prop = (feature?.properties?.ISO_A3 || feature?.properties?.ADM0_A3) as string | undefined;
+                const numericId = feature?.id ? String(feature.id) : undefined;
+                const iso3 = iso3Prop || (numericId ? numericToIso3[numericId] : undefined);
+                
+                // Check if this is the passport holder's home country
+                if (iso3 === selectedPassportIso3) {
+                  fillColor = 'hsl(280, 70%, 50%)'; // Home country - bright purple
+                  hasData = true;
+                } else {
+                  const visaMap = byPassport[selectedPassportIso3] || {};
+                  const req = (iso3 && visaMap[iso3]) || 'n/a';
+                  fillColor = getVisaColor(req as any);
+                  hasData = !!iso3 && Object.prototype.hasOwnProperty.call(visaMap, iso3);
+                }
+              } else {
+                fillColor = getColorForCountry(countryId, selectedMonth, selectedCategory);
+                hasData = hasCountryData(countryId, selectedMonth);
+              }
               
               return (
                 <path
@@ -117,14 +154,16 @@ export const WorldMapSVG: React.FC<WorldMapSVGProps> = ({
               );
             })}
 
-            <CountryMarkers
-              selectedMonth={selectedMonth}
-              selectedCategory={selectedCategory}
-              projection={projection}
-              onCountryHover={handleCountryHover}
-              onCountryLeave={handleCountryLeave}
-              currentZoom={currentZoom}
-            />
+            {selectedCategory !== 'visa' && (
+              <CountryMarkers
+                selectedMonth={selectedMonth}
+                selectedCategory={selectedCategory}
+                projection={projection}
+                onCountryHover={handleCountryHover}
+                onCountryLeave={handleCountryLeave}
+                currentZoom={currentZoom}
+              />
+            )}
           </g>
         </svg>
       </div>
