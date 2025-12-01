@@ -1,10 +1,10 @@
 {
-  "name": "wander-month-map",
+  "name": "travel",
   "private": true,
   "version": "0.0.1",
   "type": "module",
   "license": "MIT",
-  "homepage": "https://geek-paradox.github.io/wander-month-map/",
+  "homepage": "https://rajat19.github.io/travel/",
   "scripts": {
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist",
