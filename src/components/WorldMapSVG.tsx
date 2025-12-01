@@ -128,7 +128,7 @@ export const WorldMapSVG: React.FC<WorldMapSVGProps> = ({
                 } else {
                   const visaMap = byPassport[selectedPassportIso3] || {};
                   const req = (iso3 && visaMap[iso3]) || 'n/a';
-                  fillColor = getVisaColor(req as any);
+                  fillColor = getVisaColor(req);
                   hasData = !!iso3 && Object.prototype.hasOwnProperty.call(visaMap, iso3);
                 }
               } else {
@@ -154,16 +154,18 @@ export const WorldMapSVG: React.FC<WorldMapSVGProps> = ({
               );
             })}
 
-            {selectedCategory !== 'visa' && (
-              <CountryMarkers
-                selectedMonth={selectedMonth}
-                selectedCategory={selectedCategory}
-                projection={projection}
-                onCountryHover={handleCountryHover}
-                onCountryLeave={handleCountryLeave}
-                currentZoom={currentZoom}
-              />
-            )}
+            <CountryMarkers
+              selectedMonth={selectedMonth}
+              selectedCategory={selectedCategory}
+              projection={projection}
+              onCountryHover={handleCountryHover}
+              onCountryLeave={handleCountryLeave}
+              currentZoom={currentZoom}
+              visaData={selectedCategory === 'visa' && selectedPassportIso3 ? {
+                byPassport,
+                selectedPassportIso3,
+              } : undefined}
+            />
           </g>
         </svg>
       </div>

@@ -64,7 +64,7 @@ export const TourismDashboard: React.FC = () => {
         <div className="flex items-center justify-center gap-2 sm:gap-3 mb-3 sm:mb-4">
           <Globe className="w-6 h-6 sm:w-8 sm:h-8 text-primary" />
           <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-            Wander Weather
+            Wanderer
           </h1>
         </div>
         <p className="text-sm sm:text-base md:text-lg text-muted-foreground max-w-2xl mx-auto px-2">
@@ -176,7 +176,7 @@ export const TourismDashboard: React.FC = () => {
 
           <footer className="text-center py-4 sm:py-6 md:py-8 mt-8 sm:mt-12 md:mt-16 border-t border-border/50">
             <p className="text-xs sm:text-sm text-muted-foreground">
-              Wander Weather • <a href="https://github.com/rajat19/wander-weather">Github</a>
+              Wanderer • <a href="https://github.com/geek-paradox/travel">Github</a>
             </p>
           </footer>
       </main>
