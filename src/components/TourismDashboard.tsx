@@ -94,7 +94,7 @@ export const TourismDashboard: React.FC = () => {
             </div>
 
             {/* World Map - Bottom on mobile, right side on desktop */}
-            <div className="flex-1 order-2 xl:order-2">
+            <div className="flex-1 order-2 xl:order-2 w-full aspect-[1200/650] max-h-[70vh] xl:aspect-auto xl:max-h-none xl:h-auto">
               <WorldMapSVG
                 selectedMonth={selectedMonth}
                 selectedCategory={selectedCategory}
