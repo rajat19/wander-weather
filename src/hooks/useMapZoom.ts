@@ -9,6 +9,7 @@ interface UseMapZoomReturn {
   zoomIn: () => void;
   zoomOut: () => void;
   resetZoom: () => void;
+  zoomTo: (x: number, y: number, scale: number) => void;
   currentZoom: number;
 }
 
@@ -151,12 +152,31 @@ export const useMapZoom = (): UseMapZoomReturn => {
       .call(zoomBehaviorRef.current!.transform, zoomIdentity);
   };
 
+  const zoomTo = (x: number, y: number, scale: number) => {
+    if (!svgElement) return;
+    if (!ensureZoomInitialized()) return;
+    
+    const width = 1200;
+    const height = 650;
+    
+    const t = zoomIdentity
+      .translate(width / 2, height / 2)
+      .scale(scale)
+      .translate(-x, -y);
+
+    select(svgElement)
+      .transition()
+      .duration(750)
+      .call(zoomBehaviorRef.current!.transform, t);
+  };
+
   return {
     containerRef,
     svgRef: setSvgRef, // Return the callback ref
     zoomIn,
     zoomOut,
     resetZoom,
+    zoomTo,
     currentZoom,
   };
 };

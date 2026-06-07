@@ -4,14 +4,14 @@ import { DataCategory } from '@/lib/firebaseDataLoader';
 import { createProjection, createPathGenerator, MAP_DIMENSIONS, getColorForCountry, hasCountryData } from '@/lib';
 import { useWorldData, useMapInteractions, useMapZoom, useTourismData, useFullscreen } from '@/hooks';
 import { CountryFeature } from '@/types';
-import { 
-  MapTooltip, 
-  MapLegend, 
-  MapInfo, 
-  CountryMarkers, 
-  FallbackMap, 
+import {
+  MapTooltip,
+  MapLegend,
+  MapInfo,
+  CountryMarkers,
+  FallbackMap,
   OceanBackground,
-  ZoomControls 
+  ZoomControls
 } from '@/components/map';
 import { useVisaData } from '@/hooks/useVisaData';
 import { getVisaColor, buildNumericToIso3Map } from '@/lib/visa';
@@ -31,7 +31,7 @@ export const WorldMapSVG: React.FC<WorldMapSVGProps> = ({
   const { tourismData, loading: tourismDataLoading, error: tourismDataError } = useTourismData();
   const { byPassport, iso3ToName } = useVisaData();
   const numericToIso3 = useMemo(() => buildNumericToIso3Map(), []);
-  
+
   // Pass visa data to map interactions when in visa mode
   const { tooltip, handleCountryHover, handleCountryLeave, handleTouchStart, handleTouchEnd } = useMapInteractions({
     selectedMonth,
@@ -42,16 +42,57 @@ export const WorldMapSVG: React.FC<WorldMapSVGProps> = ({
       numericToIso3,
     } : undefined,
   });
-  
-  const { containerRef, svgRef, zoomIn, zoomOut, resetZoom, currentZoom } = useMapZoom();
+
+  const { containerRef, svgRef, zoomIn, zoomOut, resetZoom, zoomTo, currentZoom } = useMapZoom();
   const { isFullscreen, toggleFullscreen } = useFullscreen();
 
   const projection = createProjection();
   const pathGenerator = createPathGenerator(projection);
 
+  const hasInitialZoomed = useRef(false);
+
   // Show loading if either world data or tourism data is loading
   const loading = worldDataLoading || tourismDataLoading;
   const error = worldDataError || tourismDataError;
+
+  // Auto-zoom to location on mount
+  React.useEffect(() => {
+    if (loading || !worldData) return;
+    if (hasInitialZoomed.current) return;
+
+    // Slight delay to ensure SVG and zoom behavior are fully initialized
+    setTimeout(() => {
+      const zoomToCoords = (lat: number, lon: number) => {
+        const coords = projection([lon, lat]);
+        if (coords) {
+          zoomTo(coords[0], coords[1], 2.5);
+        }
+      };
+
+      const INDIA_LAT = 20.5937;
+      const INDIA_LON = 78.9629;
+
+      if ('geolocation' in navigator) {
+        navigator.geolocation.getCurrentPosition(
+          (position) => {
+            zoomToCoords(position.coords.latitude, position.coords.longitude);
+            hasInitialZoomed.current = true;
+          },
+          (err) => {
+            zoomToCoords(INDIA_LAT, INDIA_LON);
+            hasInitialZoomed.current = true;
+          },
+          { timeout: 5000 }
+        );
+      } else {
+        zoomToCoords(INDIA_LAT, INDIA_LON);
+        hasInitialZoomed.current = true;
+      }
+    }, 100);
+
+    // Mark as zoomed immediately so we don't fire multiple setTimeouts
+    hasInitialZoomed.current = true;
+  }, [loading, worldData, projection, zoomTo]);
 
   // Show loading state
   if (loading) {
@@ -104,7 +145,7 @@ export const WorldMapSVG: React.FC<WorldMapSVGProps> = ({
             width="100%"
             height="100%"
             viewBox={MAP_DIMENSIONS.viewBox}
-            preserveAspectRatio="xMidYMid meet"
+            preserveAspectRatio={typeof window !== 'undefined' && window.innerWidth < 768 ? "xMidYMid slice" : "xMidYMid meet"}
             className="w-full h-full cursor-grab active:cursor-grabbing"
             style={{ touchAction: 'none', pointerEvents: 'all' }}
           >
@@ -123,7 +164,7 @@ export const WorldMapSVG: React.FC<WorldMapSVGProps> = ({
                   const iso3Prop = (feature?.properties?.ISO_A3 || feature?.properties?.ADM0_A3) as string | undefined;
                   const numericId = feature?.id ? String(feature.id) : undefined;
                   const iso3 = iso3Prop || (numericId ? numericToIso3[numericId] : undefined);
-                  
+
                   // Check if this is the passport holder's home country
                   if (iso3 === selectedPassportIso3) {
                     fillColor = 'hsl(280, 70%, 50%)'; // Home country - bright purple
@@ -138,7 +179,7 @@ export const WorldMapSVG: React.FC<WorldMapSVGProps> = ({
                   fillColor = getColorForCountry(countryId, selectedMonth, selectedCategory);
                   hasData = hasCountryData(countryId, selectedMonth);
                 }
-                
+
                 return (
                   <path
                     key={`country-${countryId}-${index}`}
@@ -146,9 +187,8 @@ export const WorldMapSVG: React.FC<WorldMapSVGProps> = ({
                     fill={fillColor}
                     stroke="hsl(0, 0%, 100%)"
                     strokeWidth="0.5"
-                    className={`transition-all duration-300 cursor-pointer ${
-                      hasData ? 'hover:stroke-4 hover:stroke-blue-500' : 'hover:stroke-2'
-                    }`}
+                    className={`transition-all duration-300 cursor-pointer ${hasData ? 'hover:stroke-4 hover:stroke-blue-500' : 'hover:stroke-2'
+                      }`}
                     onMouseEnter={(e) => handleCountryHover(e, countryId)}
                     onMouseLeave={handleCountryLeave}
                     onTouchStart={(e) => handleTouchStart(e, countryId)}
@@ -185,11 +225,28 @@ export const WorldMapSVG: React.FC<WorldMapSVGProps> = ({
           />
         </div>
 
-        <MapTooltip 
-          tooltip={tooltip} 
-          maxWidth={1000} 
-          maxHeight={600} 
+        <MapTooltip
+          tooltip={tooltip}
+          maxWidth={1000}
+          maxHeight={600}
         />
+
+        {/* Desktop overlaid controls (Legend and Info) */}
+        <div className="hidden md:block pointer-events-none">
+          <div className="pointer-events-auto">
+            <MapLegend
+              selectedCategory={selectedCategory}
+              countryCount={tourismData.length}
+            />
+          </div>
+          <div className="pointer-events-auto">
+            <MapInfo
+              selectedMonth={selectedMonth}
+              selectedCategory={selectedCategory}
+              countryCount={tourismData.length}
+            />
+          </div>
+        </div>
       </div>
 
       {/* Controls Section - Below map on mobile, overlaid on desktop */}
@@ -236,13 +293,13 @@ export const WorldMapSVG: React.FC<WorldMapSVGProps> = ({
         <div className="grid grid-cols-1 gap-3 p-3">
           <div className="bg-gray-50 rounded-lg p-3">
             <h3 className="font-semibold text-sm mb-2">
-              {selectedCategory === 'temperature' 
-                ? 'Temperature (°C)' 
-                : selectedCategory === 'rainfall' 
-                ? 'Rainfall (mm)'
-                : selectedCategory === 'bestTime'
-                ? 'Best time to visit'
-                : 'Visa requirements'}
+              {selectedCategory === 'temperature'
+                ? 'Temperature (°C)'
+                : selectedCategory === 'rainfall'
+                  ? 'Rainfall (mm)'
+                  : selectedCategory === 'bestTime'
+                    ? 'Best time to visit'
+                    : 'Visa requirements'}
             </h3>
             <div className="text-xs space-y-2">
               {selectedCategory === 'temperature' ? (
@@ -323,24 +380,6 @@ export const WorldMapSVG: React.FC<WorldMapSVGProps> = ({
               {selectedCategory === 'visa' ? '199 countries' : `${tourismData.length} countries with data`}
             </div>
           </div>
-        </div>
-      </div>
-
-      {/* Desktop overlaid controls (Legend and Info) */}
-      <div className="hidden md:block">
-        <div className="absolute bottom-2 sm:bottom-4 left-2 sm:left-4">
-          <MapLegend 
-            selectedCategory={selectedCategory} 
-            countryCount={tourismData.length} 
-          />
-        </div>
-
-        <div className="absolute bottom-2 sm:bottom-4 right-2 sm:right-4">
-          <MapInfo
-            selectedMonth={selectedMonth}
-            selectedCategory={selectedCategory}
-            countryCount={tourismData.length}
-          />
         </div>
       </div>
     </div>

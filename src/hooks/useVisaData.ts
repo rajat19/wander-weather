@@ -41,7 +41,7 @@ export const useVisaData = (): UseVisaDataReturn => {
       let lastError: Error | null = null;
       for (const path of VISA_CSV_PATHS) {
         try {
-          console.log(`[useVisaData] Attempting to fetch from: ${path}`);
+
           const res = await fetch(path, { cache: 'force-cache' });
           if (!res.ok) {
             lastError = new Error(`HTTP ${res.status}`);
@@ -49,7 +49,7 @@ export const useVisaData = (): UseVisaDataReturn => {
           }
           
           const text = await res.text();
-          console.log(`[useVisaData] Successfully loaded ${text.length} bytes from ${path}`);
+
           
           const parsed: VisaRowIso3[] = [];
           const lines = text.split(/\r?\n/);
@@ -66,7 +66,7 @@ export const useVisaData = (): UseVisaDataReturn => {
             });
           }
           
-          console.log(`[useVisaData] Parsed ${parsed.length} visa entries`);
+
           
           if (!cancelled) {
             setRows(parsed);
@@ -99,7 +99,7 @@ export const useVisaData = (): UseVisaDataReturn => {
       if (!map[r.passport]) map[r.passport] = {};
       map[r.passport][r.destination] = r.requirement;
     }
-    console.log(`[useVisaData] Built map for ${Object.keys(map).length} passports`);
+
     return map;
   }, [rows]);
 

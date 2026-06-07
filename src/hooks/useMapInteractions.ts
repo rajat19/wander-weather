@@ -104,12 +104,16 @@ export const useMapInteractions = (options: UseMapInteractionsOptions | string) 
   };
 
   const handleTouchStart = (event: React.TouchEvent, countryId: string) => {
-    event.preventDefault();
+    if (event.cancelable) {
+      event.preventDefault();
+    }
     handleCountryHover(event, countryId);
   };
 
   const handleTouchEnd = (event: React.TouchEvent) => {
-    event.preventDefault();
+    if (event.cancelable) {
+      event.preventDefault();
+    }
     // Add a small delay for touch events to allow for better UX
     touchTimeoutRef.current = setTimeout(() => {
       handleCountryLeave();

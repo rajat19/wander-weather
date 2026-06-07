@@ -16,8 +16,8 @@ export const MonthSelector: React.FC<MonthSelectorProps> = ({
 
   if (loading) {
     return (
-      <div className={isFullscreen 
-        ? "bg-white/95 backdrop-blur-sm rounded-lg shadow-xl border p-3 w-64" 
+      <div className={isFullscreen
+        ? "bg-white/95 backdrop-blur-sm rounded-lg shadow-xl border p-3 w-64"
         : "bg-white rounded-lg shadow-lg border p-4 sm:p-6 h-fit"
       }>
         <div className="animate-pulse">
@@ -33,29 +33,26 @@ export const MonthSelector: React.FC<MonthSelectorProps> = ({
   }
 
   return (
-    <div className={isFullscreen 
-      ? "bg-white/95 backdrop-blur-sm rounded-lg shadow-xl border p-3 w-64" 
+    <div className={isFullscreen
+      ? "bg-white/95 backdrop-blur-sm rounded-lg shadow-xl border p-3 w-64"
       : "bg-white rounded-lg shadow-lg border p-4 sm:p-6 h-fit"
     }>
-      <h2 className={`font-semibold text-foreground ${
-        isFullscreen ? "text-sm mb-2" : "text-base sm:text-lg mb-3 sm:mb-4"
-      }`}>
+      <h2 className={`font-semibold text-foreground ${isFullscreen ? "text-sm mb-2" : "text-base sm:text-lg mb-3 sm:mb-4"
+        }`}>
         {isFullscreen ? "Select Month" : "Select a Month to Explore"}
       </h2>
-      <div className={isFullscreen ? "grid grid-cols-3 gap-1" : "grid grid-cols-3 sm:grid-cols-2 gap-1 sm:gap-2"}>
+      <div className={isFullscreen ? "grid grid-cols-3 gap-1" : "grid grid-cols-4 gap-1 sm:gap-2"}>
         {months.map((month) => (
           <button
             key={month}
             onClick={() => onMonthSelect(month)}
-            className={`rounded-lg font-medium transition-all duration-200 text-left ${
-              isFullscreen 
-                ? "px-2 py-1 text-xs" 
-                : "px-2 sm:px-4 py-2 sm:py-3 text-xs sm:text-sm"
-            } ${
-              selectedMonth === month
+            className={`rounded-lg font-medium transition-all duration-200 text-left ${isFullscreen
+              ? "px-2 py-1 text-xs"
+              : "px-2 sm:px-4 py-2 sm:py-3 text-xs sm:text-sm"
+              } ${selectedMonth === month
                 ? 'bg-blue-600 text-white shadow-md transform scale-105'
                 : 'bg-gray-50 text-gray-700 hover:bg-blue-50 hover:text-blue-700 hover:shadow-sm'
-            }`}
+              }`}
           >
             {isFullscreen ? month.substring(0, 3) : month}
           </button>

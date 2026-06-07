@@ -108,7 +108,7 @@ export const MapTooltip: React.FC<MapTooltipProps> = ({
 
   return (
     <div
-      className={`absolute z-50 rounded-xl shadow-2xl border-2 transition-all duration-200 pointer-events-none max-w-[280px] sm:max-w-[320px] ${
+      className={`absolute z-50 rounded-xl shadow-2xl border-2 transition-all duration-200 pointer-events-none max-w-[210px] sm:max-w-[320px] w-max sm:w-auto ${
         isVisaMode && tooltip.visaRequirement
           ? `${getVisaBgColor(tooltip.visaRequirement)} ${getVisaTextColor()} ${getVisaBorderColor(tooltip.visaRequirement)}`
           : `${weather.bgColor} ${weather.textColor} ${weather.borderColor}`
@@ -116,18 +116,17 @@ export const MapTooltip: React.FC<MapTooltipProps> = ({
       style={{
         left: leftPos,
         top: topPos,
-        maxWidth: `${tooltipWidth}px`,
         transform: 'translateZ(0)', // Force hardware acceleration for smoother rendering
       }}
     >
       {/* Header */}
-      <div className="p-3 sm:p-4 pb-2">
-        <div className="flex items-center justify-between mb-2 sm:mb-3">
-          <h3 className="font-bold text-xs sm:text-sm">{tooltip.country}</h3>
+      <div className="p-2 sm:p-4 pb-1.5 sm:pb-2">
+        <div className="flex items-center justify-between mb-1.5 sm:mb-3 gap-2">
+          <h3 className="font-bold text-[13px] sm:text-sm leading-tight">{tooltip.country}</h3>
           {!isVisaMode && (
-            <div className='justify-end items-center flex gap-1 sm:gap-2'>
-              <div className="text-sm sm:text-md">{weather.emoji}</div>
-              <div className={`text-sm sm:text-md font-bold ${
+            <div className='justify-end items-center flex gap-1 sm:gap-2 shrink-0'>
+              <div className="text-[13px] sm:text-md">{weather.emoji}</div>
+              <div className={`text-[13px] sm:text-md font-bold ${
                   tooltip.bestTime === 'best' ? 'text-green-300' :
                   tooltip.bestTime === 'okay' ? 'text-yellow-300' : 'text-red-300'
                 }`}>
@@ -140,12 +139,12 @@ export const MapTooltip: React.FC<MapTooltipProps> = ({
         
         {/* Visa requirement info (if in visa mode) */}
         {tooltip.visaRequirement && tooltip.passportCountry && (
-          <div className="text-center mb-2 sm:mb-3 bg-black bg-opacity-20 rounded-md p-2">
-            <div className="text-sm font-bold flex items-center justify-center gap-2">
+          <div className="text-center mb-1.5 sm:mb-3 bg-black bg-opacity-20 rounded-md p-1.5 sm:p-2">
+            <div className="text-[11px] sm:text-sm font-bold flex items-center justify-center gap-1 sm:gap-2">
               <span>{getVisaEmoji(tooltip.visaRequirement)}</span>
               <span>{getVisaText(tooltip.visaRequirement)}</span>
             </div>
-            <div className="text-xs opacity-90 mt-1">
+            <div className="text-[10px] sm:text-xs opacity-90 mt-0.5 sm:mt-1">
               for {tooltip.passportCountry} passport
             </div>
           </div>
@@ -153,50 +152,57 @@ export const MapTooltip: React.FC<MapTooltipProps> = ({
         
         {/* Weather condition banner (only if not visa mode) */}
         {!isVisaMode && (
-          <div className="text-center mb-2 sm:mb-3">
-            <div className="text-xs font-medium opacity-90">{weather.icon} {tooltip.description}</div>
+          <div className="text-center mb-1.5 sm:mb-3">
+            <div className="text-[11px] sm:text-xs font-medium opacity-90 leading-tight">
+              {weather.icon} <span className="hidden sm:inline">{tooltip.description}</span>
+              <span className="sm:hidden">{tooltip.description.replace(/ in .*/, '')}</span>
+            </div>
           </div>
         )}
       </div>
 
       {/* Weather details - ONLY show if not in visa mode */}
       {!isVisaMode && (
-        <div className="px-3 sm:px-4 pb-3 sm:pb-4 space-y-2 sm:space-y-3">
-          <div className='grid grid-cols-2 gap-2'>
+        <div className="px-2 sm:px-4 pb-2 sm:pb-4 space-y-1.5 sm:space-y-3">
+          <div className='flex flex-col sm:grid sm:grid-cols-2 gap-1.5 sm:gap-2'>
             {/* Temperature section */}
-            <div className="bg-black bg-opacity-20 rounded-md p-2 sm:p-3">
-              <div className="flex items-center justify-between mb-1 sm:mb-2">
-                <span className="text-xs font-medium opacity-80">🌡️ Temperature</span>
+            <div className="bg-black bg-opacity-20 rounded-md p-1.5 sm:p-3 flex sm:block items-center justify-between">
+              <div className="flex items-center sm:mb-2">
+                <span className="text-[10px] sm:text-xs font-medium opacity-80">
+                  🌡️ <span className="hidden sm:inline">Temperature</span><span className="sm:hidden">Temp</span>
+                </span>
               </div>
-              <div className="grid grid-cols-2 gap-1 sm:gap-2 text-xs sm:text-sm">
-                <div className="text-center">
-                  <div className="text-xs font-bold">🌅 {tooltip.avgDayTemp}°C</div>
-                  <div className="text-xs opacity-75">{dayFeeling}</div>
+              <div className="flex sm:grid sm:grid-cols-2 gap-2 sm:gap-2 text-[11px] sm:text-sm">
+                <div className="text-center flex items-center gap-1 sm:block">
+                  <div className="font-bold">🌅 {tooltip.avgDayTemp}°C</div>
+                  <div className="opacity-75 hidden sm:block text-xs">{dayFeeling}</div>
                 </div>
-                <div className="text-center">
-                  <div className="text-xs font-bold">🌙 {tooltip.avgNightTemp}°C</div>
-                  <div className="text-xs opacity-75">{nightFeeling}</div>
+                <div className="text-center flex items-center gap-1 sm:block">
+                  <div className="font-bold">🌙 {tooltip.avgNightTemp}°C</div>
+                  <div className="opacity-75 hidden sm:block text-xs">{nightFeeling}</div>
                 </div>
               </div>
             </div>
 
             {/* Rainfall section */}
-            <div className="bg-black bg-opacity-20 rounded-lg p-2 sm:p-3">
-              <div className="flex items-center justify-between mb-1 sm:mb-2">
-                <span className="text-xs font-medium opacity-80">💧 Precipitation</span>
+            <div className="bg-black bg-opacity-20 rounded-md p-1.5 sm:p-3 flex sm:block items-center justify-between">
+              <div className="flex items-center sm:mb-2">
+                <span className="text-[10px] sm:text-xs font-medium opacity-80">
+                  💧 <span className="hidden sm:inline">Precipitation</span><span className="sm:hidden">Rain</span>
+                </span>
               </div>
-              <div className="text-center">
-                <div className="text-xs font-bold">{tooltip.rainfall}mm</div>
-                <div className="text-xs opacity-75">{rainfallLevel} rainfall</div>
+              <div className="text-right sm:text-center">
+                <div className="text-[11px] sm:text-xs font-bold">{tooltip.rainfall}mm</div>
+                <div className="text-[10px] sm:text-xs opacity-75 hidden sm:block">{rainfallLevel} rainfall</div>
               </div>
             </div>
           </div>
 
           {/* Regional variations for large countries */}
           {tooltip.regions && tooltip.selectedMonth && (
-            <div className="bg-black bg-opacity-20 rounded-lg p-2 sm:p-3">
+            <div className="bg-black bg-opacity-20 rounded-md p-1.5 sm:p-3">
               <div className="flex items-center justify-between mb-1 sm:mb-2">
-                <span className="text-xs font-medium opacity-80">🌍 Regional Variations</span>
+                <span className="text-[10px] sm:text-xs font-medium opacity-80">🌍 Reg. Variations</span>
               </div>
               <div className="space-y-1 sm:space-y-2">
                 {tooltip.regions.map((region, index) => {
@@ -209,14 +215,14 @@ export const MapTooltip: React.FC<MapTooltipProps> = ({
                                       regionData.bestTime === 'okay' ? 'text-yellow-300' : 'text-red-300';
                   
                   return (
-                    <div key={index} className="flex items-center justify-between text-xs">
+                    <div key={index} className="flex items-center justify-between text-[10px] sm:text-xs">
                       <div className="flex items-center gap-1">
                         <span className={regionColor}>{regionIcon}</span>
                         <span className="opacity-90">{region.name}</span>
                       </div>
-                      <div className="text-right opacity-80 flex gap-1 sm:gap-2">
+                      <div className="text-right opacity-80 flex gap-1.5 sm:gap-2">
                         <div>{regionData.avgDayTemp}°C</div>
-                        <div className="text-xs opacity-60">{regionData.rainfall}mm</div>
+                        <div className="opacity-60">{regionData.rainfall}mm</div>
                       </div>
                     </div>
                   );
