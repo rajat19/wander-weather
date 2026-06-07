@@ -12,7 +12,8 @@
     "build": "vite build",
     "build:dev": "vite build --mode development",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "validate-data": "tsx scripts/validate_data.ts"
   },
   "dependencies": {
     "@tanstack/react-query": "^5.56.2",

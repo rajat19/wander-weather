@@ -41,7 +41,7 @@ export const MonthSelector: React.FC<MonthSelectorProps> = ({
         }`}>
         {isFullscreen ? "Select Month" : "Select a Month to Explore"}
       </h2>
-      <div className={isFullscreen ? "grid grid-cols-3 gap-1" : "grid grid-cols-4 gap-1 sm:gap-2"}>
+      <div className={isFullscreen ? "grid grid-cols-3 gap-1" : "grid xl:grid-cols-2 grid-cols-4 gap-1 sm:gap-2"}>
         {months.map((month) => (
           <button
             key={month}
